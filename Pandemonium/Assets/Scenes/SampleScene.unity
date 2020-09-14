@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.4465782, g: 0.49641252, b: 0.5748167, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -155,8 +155,9 @@ MonoBehaviour:
   toBeSpawned: {fileID: 1334580919271131658, guid: b699b66f71d123b4cb9a6ea62201f295, type: 3}
   spawnUnder: {fileID: 1723265406}
   spawnOffset: {x: 0, y: 0, z: 0}
-  spawnForce: 0
-  spawnDirection: {x: 0, y: 0, z: 0}
+  spawnForce: 400
+  spawnDirection: {x: 1, y: 1, z: 0}
+  useRandomDirection: 1
   spawnRotation: {x: 0, y: 0, z: 0}
 --- !u!4 &276760855
 Transform:

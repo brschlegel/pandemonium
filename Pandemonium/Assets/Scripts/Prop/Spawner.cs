@@ -9,7 +9,7 @@ public class Spawner : MonoBehaviour
     public Vector3 spawnOffset;
     public float spawnForce;
     public Vector3 spawnDirection; 
-
+    public bool useRandomDirection;
     public Vector3 spawnRotation;
 
     
@@ -18,14 +18,18 @@ public class Spawner : MonoBehaviour
         Spawn();
     }
 
-    // Update is called once per frame
     void Update()
     {
         
     }
     public void Spawn()
     {
+        if(useRandomDirection)
+        {
+            spawnDirection = Random.insideUnitSphere;
+        }
         GameObject g = Instantiate(toBeSpawned,transform.position + spawnOffset, Quaternion.Euler(transform.eulerAngles + spawnRotation), spawnUnder.transform );
         g.GetComponent<Rigidbody>().AddForce(spawnForce * spawnDirection);
     }
 }
+
