@@ -11,10 +11,7 @@ public class ScoredEvent : UnityEvent<GameObject>
 
 public class Goal : MonoBehaviour
 {
-
     public ScoredEvent entered;
-
-    
     void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.tag == "MainCollider")

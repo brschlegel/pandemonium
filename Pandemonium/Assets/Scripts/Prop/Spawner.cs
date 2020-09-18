@@ -21,7 +21,7 @@ public class Spawner : MonoBehaviour
 
     void Start()
     {
-        if(timedInterval != 0)
+        if (timedInterval != 0)
         {
             InvokeRepeating("Spawn", startDelay, timedInterval);
         }
@@ -42,11 +42,39 @@ public class Spawner : MonoBehaviour
             {
                 spawnDirection = Util.GetRandomUnitVector(0, 2 * Mathf.PI, 0, 2 * Mathf.PI);
             }
-
-            GameObject g = Instantiate(toBeSpawned, transform.position + spawnOffset, Quaternion.Euler(transform.eulerAngles + spawnRotation), spawnUnder.transform);
-            g.GetComponent<Rigidbody>().AddForce(spawnForce * spawnDirection);
+            Transform freeObject = CheckParent();
+            GameObject obj = null;
+            //we do be recyclin
+            //If there is a disabled version of the prefab we want to spawn, use that instead
+            if (freeObject == null)
+            {
+                
+                obj = Instantiate(toBeSpawned, transform.position + spawnOffset, Quaternion.Euler(transform.eulerAngles + spawnRotation), spawnUnder.transform);
+            }
+            else
+            {
+                freeObject.position = spawnOffset + transform.position;
+                freeObject.rotation = Quaternion.Euler(transform.eulerAngles + spawnRotation);
+                freeObject.gameObject.SetActive(true);
+                obj = freeObject.gameObject;
+            }
+            obj.GetComponent<Rigidbody>().AddForce(spawnForce * spawnDirection);
         }
 
+    }
+
+    public Transform CheckParent()
+    {
+        foreach (Transform child in spawnUnder.transform)
+        {
+            if (!child.gameObject.activeInHierarchy)
+            {
+                return child;
+            }
+
+
+        }
+        return null;
     }
 }
 
