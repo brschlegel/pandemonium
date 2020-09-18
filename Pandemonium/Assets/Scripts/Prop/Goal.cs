@@ -6,18 +6,45 @@ using UnityEngine.Events;
 [System.Serializable]
 public class ScoredEvent : UnityEvent<GameObject>
 {
-    
+
+}
+
+[System.Serializable]
+
+public class EventTagMap
+{
+     public string tag;
+    public ScoredEvent tagEvent;
+   
 }
 
 public class Goal : MonoBehaviour
 {
-    public ScoredEvent entered;
+    public List<EventTagMap> eventTagMap;
+    public ScoredEvent defaultEvent;
+    void Start()
+    {
+ 
+    }
     void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "MainCollider")
+        if (other.gameObject.tag == "MainCollider")
         {
-            entered.Invoke(other.gameObject);
+            for (int i = 0; i < eventTagMap.Count; i++)
+            {
+                if (other.GetComponent<TagList>().HasTag(eventTagMap[i].tag))
+                {
+                    eventTagMap[i].tagEvent.Invoke(other.gameObject);
+                    return;
+                }
+            }
+            //if reached here and no return, then call default
+            defaultEvent.Invoke(other.gameObject);
+
+
         }
+
+
     }
 
 }

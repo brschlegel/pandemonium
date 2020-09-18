@@ -17,6 +17,10 @@ public class TestEvent : MonoBehaviour
     }
 
     public void EventCall(GameObject g){
-        //Debug.Log(g.name);
+        //Debug.Log("Event call");
+    }
+
+    public void BallCall(GameObject g){
+        //Debug.Log("hitem w da ball call");
     }
 }
