@@ -8,13 +8,14 @@ public class Spawner : MonoBehaviour
     public GameObject spawnUnder;
     public Vector3 spawnOffset;
     public float spawnForce;
-    public Vector3 spawnDirection;
+    public List<Vector3> spawnDirectionQueue;
     public bool useRandomDirection;
     public Vector3 spawnRotation;
     public int numSpawned;
 
     public float timedInterval;
     public float startDelay;
+    private int queueIndex;
 
 
 
@@ -26,6 +27,7 @@ public class Spawner : MonoBehaviour
             InvokeRepeating("Spawn", startDelay, timedInterval);
         }
         Spawn();
+        queueIndex = 0;
 
     }
 
@@ -40,7 +42,7 @@ public class Spawner : MonoBehaviour
         {
             if (useRandomDirection)
             {
-                spawnDirection = Util.GetRandomUnitVector(0, 2 * Mathf.PI, 0, 2 * Mathf.PI);
+                spawnDirectionQueue[0] = Util.GetRandomUnitVector(0, 2 * Mathf.PI, 0, 2 * Mathf.PI);
             }
             Transform freeObject = CheckParent();
             GameObject obj = null;
@@ -58,11 +60,13 @@ public class Spawner : MonoBehaviour
                 freeObject.gameObject.SetActive(true);
                 obj = freeObject.gameObject;
             }
-            obj.GetComponent<Rigidbody>().AddForce(spawnForce * spawnDirection);
+            obj.GetComponent<Rigidbody>().AddForce(spawnForce * spawnDirectionQueue[queueIndex % spawnDirectionQueue.Count].normalized);
+            queueIndex++;
         }
 
     }
 
+    //checks for disabled children, returns null if none found
     public Transform CheckParent()
     {
         foreach (Transform child in spawnUnder.transform)
