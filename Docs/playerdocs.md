@@ -15,7 +15,14 @@ maxVelocityChange: This affects more of the turning speed/braking speed of the c
 frictionCoeff: In contrast to actual physics, the higher this is, the less friction slows you down
 gravity: What it says on the tin
 jumpForce: Force applied up
-maxJumps: Max number of jumps allowed before grounding
-jumpMaxVelocityChange: Control in the air
+maxJumps: Max number of jumps allowed before grounded again
+jumpMaxVelocityChangeRatio: Control in the air percentage of control on the ground
+jumpMovementVelocityRatio: Actual speed you can gain in the air over speed on the ground
+moving: are you moving?
+grounded: are you grounded?
+canDash: can you dash?
+
+## Methodology
+Events are written with InputAction.CallBackContext argument to handle player input, physics are handled in Fixed Update. The player determines if they are grounded by using a collider on a child object that calls an event in the basic movement script. Dashes are currently handled with an event, and a bool controlled by an IEnumerator Cooldown function.
 
 

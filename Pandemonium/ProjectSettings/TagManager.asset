@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Prop
+  - Ball
+  - MainCollider
   layers:
   - Default
   - TransparentFX

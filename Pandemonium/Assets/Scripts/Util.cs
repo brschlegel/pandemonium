@@ -9,6 +9,12 @@ public static class Util
     {
         float theta = Random.Range(thetaLowerBound, thetaUpperBound);
         float phi = Random.Range(phiLowerBound,phiUpperBound);
-        float x = Mathf.sin(phi) * Mathf.cos(theta);
+        float x = Mathf.Sin(phi) * Mathf.Cos(theta);
+        float y = Mathf.Sin(phi) * Mathf.Sin(theta);
+        float z = Mathf.Cos(phi);
+
+        return new Vector3(x,y,z);
+
+        
     }
 }

@@ -7,7 +7,7 @@ using UnityEngine.Events;
 public class BasicMovement : MonoBehaviour
 {
     #region Variables
-    public InputMaster inputMaster;
+
     private GroundColliderScript groundCallBack;
     public Rigidbody rb;
     [Header("Movement Variables")]
@@ -34,7 +34,6 @@ public class BasicMovement : MonoBehaviour
     #endregion
     private void Awake()
     {
-        inputMaster = new InputMaster();
         groundCallBack = transform.GetChild(0).GetComponent<GroundColliderScript>();
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
@@ -51,15 +50,6 @@ public class BasicMovement : MonoBehaviour
         grounded = true;
         jumps = 0;
 
-    }
-
-    private void OnEnable()
-    {
-        inputMaster.Enable();
-       // inputMaster.Hub.Movement.performed += OnMovementStart;
-        //inputMaster.Hub.Movement.canceled += OnMovementEnd;
-        //inputMaster.Hub.Jump.performed += OnJump;
-        //inputMaster.Hub.Dash.performed += OnDash;
     }
 
     public void OnMovement(InputAction.CallbackContext ctx)
@@ -109,15 +99,7 @@ public class BasicMovement : MonoBehaviour
         canDash = true;
     }
     
-    private void OnDisable()
-    {
-        inputMaster.Disable();
-       // inputMaster.Hub.Movement.performed -= OnMovementStart;
-        //inputMaster.Hub.Movement.canceled -= OnMovementEnd;
-        //inputMaster.Hub.Jump.performed -= OnJump;
-        //inputMaster.Hub.Dash.performed -= OnDash;
-    }
-
+   
     #endregion 
     private void FixedUpdate()
     {
