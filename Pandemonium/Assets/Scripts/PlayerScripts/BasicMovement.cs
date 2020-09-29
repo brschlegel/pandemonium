@@ -13,9 +13,13 @@ public class BasicMovement : MonoBehaviour
     [Header("Movement Variables")]
     public float speed = 10.0f;
     public float maxVelocityChange = 20.0f;
-    public float dashForce = 500f;
+    public float dashTime = .25f;
+    public float dashSpeed = 7;
+    Vector3 dashVelocity;
     public float dashCooldown = 3f;
     public float frictionCoeff = .93f;
+
+    Vector3 dashVector;
 
     [Header("Jump Variables")]
     public float gravity = 10.0f;
@@ -27,7 +31,7 @@ public class BasicMovement : MonoBehaviour
     private bool moving = false;
     Vector2 movementDirection;
     private bool grounded = true;
-    
+
     private float jumpMaxVelocityChange;
     int jumps = 0;
     bool canDash;
@@ -54,12 +58,12 @@ public class BasicMovement : MonoBehaviour
 
     public void OnMovement(InputAction.CallbackContext ctx)
     {
-        if(ctx.performed)
+        if (ctx.performed)
         {
-        movementDirection = ctx.ReadValue<Vector2>();
-        moving = true;
+            movementDirection = ctx.ReadValue<Vector2>();
+            moving = true;
         }
-        else if(ctx.canceled)
+        else if (ctx.canceled)
         {
             moving = false;
         }
@@ -71,7 +75,7 @@ public class BasicMovement : MonoBehaviour
 
     public void OnJump(InputAction.CallbackContext ctx)
     {
-        
+
         if (jumps < maxJumps - 1 && ctx.performed)
         {
             movementDirection = Vector2.zero;
@@ -85,22 +89,32 @@ public class BasicMovement : MonoBehaviour
     {
         if (canDash)
         {
-            Vector3 dashVector = dashForce * (new Vector3(movementDirection.x, 0, movementDirection.y));
-            //rb.velocity += dashVector;
-            rb.AddForce(dashVector);
             canDash = false;
+            dashVelocity = dashSpeed * ((new Vector3(movementDirection.x ,0, movementDirection.y)).normalized);
             StartCoroutine("Cooldown", dashCooldown);
+            StartCoroutine("Dash",.25f);
+            
         }
     }
 
     public IEnumerator Cooldown(float time)
-    {
+    {  
+        
         yield return new WaitForSeconds(time);
         canDash = true;
+        
     }
-    
-   
-    #endregion 
+
+    public IEnumerator Dash(float time)
+    {
+        Vector3 prevVelocity = rb.velocity;
+        rb.velocity = dashVelocity;
+        yield return new WaitForSeconds(time);
+        rb.velocity = prevVelocity;
+    }
+
+
+    #endregion
     private void FixedUpdate()
     {
         //I really wish there was an neater way to do this, but I think this is the only way to have continous movement on a held key
@@ -141,14 +155,12 @@ public class BasicMovement : MonoBehaviour
             rb.AddForce(velocityChange);
         }
 
-       
-
         //applying our own gravity 
         rb.AddForce(new Vector3(0, -gravity * rb.mass, 0));
         //movementDirection = Vector2.zero;
         grounded = false;
     }
 
-    //We unsubscribe the methods when they have been disabled to keep them from floating around and causing issues
+
 
 }

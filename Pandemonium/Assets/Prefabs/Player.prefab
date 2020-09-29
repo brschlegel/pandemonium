@@ -192,8 +192,9 @@ MonoBehaviour:
   rb: {fileID: 6223931530694216806}
   speed: 10
   maxVelocityChange: 10
-  dashForce: 500
-  dashCooldown: 3
+  dashForce: 50
+  dashFrames: 20
+  dashCooldown: 1.5
   frictionCoeff: 0.93
   gravity: 10
   jumpMaxVelocityChangeRatio: 0.6666
