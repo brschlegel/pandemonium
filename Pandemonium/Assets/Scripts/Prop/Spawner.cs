@@ -19,9 +19,9 @@ public class Spawner : MonoBehaviour
 
 
 
-
     void Start()
     {
+
         if (timedInterval != 0)
         {
             InvokeRepeating("Spawn", startDelay, timedInterval);
