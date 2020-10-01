@@ -6,11 +6,12 @@ using UnityEngine.UI;
 
 public class GameScoresManager : MonoBehaviour
 {
-    //This is for the current mini-game's score
+    //This is for the current mini-game's score. Not overall
     private List<GameObject> Players; //I'd like to make it so I can just reference this somewhere someday without making a new list of players each time
     private List<int> PlayerGameScores;
     private List<Text> PlayerScoreTextList;
     private List<string> colors = new List<string>();
+    public bool isActive; // Allows players to score
 
     public GameObject canvas;
 
@@ -20,10 +21,6 @@ public class GameScoresManager : MonoBehaviour
     {
         GameScoreSetup();
         CreateScoreText();
-        Player0Score();
-        Player1Score();
-        Player2Score();
-        Player3Score();
     }
 
     // Update is called once per frame
@@ -33,13 +30,13 @@ public class GameScoresManager : MonoBehaviour
 
     public void GameScoreSetup()
     {
+        isActive = false;
         PlayerGameScores = new List<int>();
         PlayerScoreTextList = new List<Text>();
         colors.AddRange(new List<string> { "Red", "Blue", "Green", "Yellow" }); //This makes it so it doesn't always display 4 people's worth of scores every time
         for (int i = 0; i < 4; i++) //4 is hardcoded in for testing purposes, will change to Player count later
         {
-            PlayerGameScores.Add(-1); //Everyone starts the mini-game with 0 points. -1 is because all the score functions run once at start. Should fix this
-            Debug.Log("Player " + i + " has a score of " + PlayerGameScores[i]);
+            PlayerGameScores.Add(0); //Everyone starts the mini-game with 0 points.
         }
     }
 
@@ -70,26 +67,48 @@ public class GameScoresManager : MonoBehaviour
     }
     public void Player0Score()
     {
-        PlayerGameScores[0] += 1;
-        PlayerScoreTextList[0].text = colors[0] + ": " + PlayerGameScores[0];
+        if (isActive == true)
+        {
+            PlayerGameScores[0] += 1;
+            PlayerScoreTextList[0].text = colors[0] + ": " + PlayerGameScores[0];
+        }
     }
 
     public void Player1Score()
     {
-        PlayerGameScores[1] += 1;
-        PlayerScoreTextList[1].text = colors[1] + ": " + PlayerGameScores[1];
+        if(isActive == true)
+        {
+            PlayerGameScores[1] += 1;
+            PlayerScoreTextList[1].text = colors[1] + ": " + PlayerGameScores[1];
+        }
     }
 
     public void Player2Score()
     {
-        PlayerGameScores[2] += 1;
-        PlayerScoreTextList[2].text = colors[2] + ": " + PlayerGameScores[2];
+        if(isActive == true)
+        {
+            PlayerGameScores[2] += 1;
+            PlayerScoreTextList[2].text = colors[2] + ": " + PlayerGameScores[2];
+        }
     }
 
     public void Player3Score()
     {
-        PlayerGameScores[3] += 1;
-        PlayerScoreTextList[3].text = colors[3] + ": " + PlayerGameScores[3];
+        if(isActive == true)
+        {
+            PlayerGameScores[3] += 1;
+            PlayerScoreTextList[3].text = colors[3] + ": " + PlayerGameScores[3];
+        }
+    }
+
+    public void AllowScoring()
+    {
+        isActive = true;
+    }
+
+    public void DisableScoring()
+    {
+        isActive = false;
     }
 
 
