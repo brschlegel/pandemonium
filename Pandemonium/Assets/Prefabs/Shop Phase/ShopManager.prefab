@@ -1,0 +1,77 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4677339573663238357
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4677339573663238356}
+  - component: {fileID: 4677339573663238359}
+  m_Layer: 0
+  m_Name: ShopManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4677339573663238356
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4677339573663238357}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 12.341898, y: 8.063136, z: -13.32313}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4677339573663238359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4677339573663238357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae626391a2f21ed499bba134c776b65e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shopList: 000000000000000000000000
+  shopPrefab: {fileID: 3776934048074068791, guid: f16f8172e0b6a2d4fb42ca6350d2b95f, type: 3}
+  shopLocList: []
+  numOfSpawnedShops: 3
+  numItemsPerShop: 0
+  buffShopInventory:
+  - {fileID: 6747683426035983942, guid: df6ecff4f08a02642aa07540dba03fae, type: 3}
+  - {fileID: 8740789569594044376, guid: d62474a16ecd09e418536aea5cfa20bc, type: 3}
+  - {fileID: 3549531983979056927, guid: 36699480a9571fc488a5269a8b8ee661, type: 3}
+  - {fileID: 2742321719060230609, guid: 792180ce467d8b548ba6b87f426e7698, type: 3}
+  nerfShopInventory:
+  - {fileID: 8220476751209888160, guid: e4c4daf965a3e3f4e975d1fc18d72246, type: 3}
+  - {fileID: 7518800244481505109, guid: 227f3456c95c7b14da94f833294df8a2, type: 3}
+  - {fileID: 3947069177121889466, guid: 9221e31fa9e7341468648037bf6203b2, type: 3}
+  - {fileID: 8503927089505861835, guid: efd1eaf416a9dad4b9bf3ea6d80ccc45, type: 3}
+  doubleShopInventory:
+  - {fileID: 5329723000552200192, guid: 4ea78fd102b54b74f909b0fcad782c37, type: 3}
+  - {fileID: 1185456035857834182, guid: 94da54da891517441875a50db207e195, type: 3}
+  - {fileID: 1332107460135852905, guid: a586f7c0d34eadf47b01a43de259afb8, type: 3}
+  - {fileID: 2266034004041402692, guid: fa894e4d01b66ad4f9fe7ffcbf34a5d8, type: 3}
+  challengeShopInventory:
+  - {fileID: 1893066106314172655, guid: cd3c482c28920c24f8b766a01ba1054e, type: 3}
+  - {fileID: 8005817590372985132, guid: 8f8aa58f15e0b0f49916116a148f6e15, type: 3}
+  - {fileID: 5592887804040187820, guid: 8d42ae1be9e4a37459559aa4c2ef3a18, type: 3}
+  - {fileID: 2039009079637083282, guid: 37bed74d9472c5e4990eee61285346a5, type: 3}
+  - {fileID: 4053753589316971341, guid: 5d76b179b8cb16249afc1539836f36c6, type: 3}
+  universalShopInventory:
+  - {fileID: 2374465582299935396, guid: 25f37bf233b60ae419394f4fbe60c872, type: 3}
+  - {fileID: 5899250062001105964, guid: 8b1bc7b87358f2b48a5bd22a3c9a2617, type: 3}
+  - {fileID: 6532705688415789573, guid: 76d54f2f79d9e39499f927c34e8c735f, type: 3}
+  - {fileID: 8829351294251036076, guid: 804707920cc52834dbafa5bbf73a4cee, type: 3}
+  - {fileID: 8616784429401475504, guid: 375ad7049b4f70a45b7085d50eeb3d2f, type: 3}
