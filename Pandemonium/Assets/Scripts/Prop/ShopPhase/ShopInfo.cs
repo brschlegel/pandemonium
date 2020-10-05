@@ -10,7 +10,7 @@ public class ShopInfo : MonoBehaviour
     // - item (GameObject) destruction
 
     public string shopName;
-    public List<GameObject> inventory; //* Can this be ItemInfo[]?
+    public List<GameObject> inventory;
 
     // Start is called before the first frame update
     void Start()
