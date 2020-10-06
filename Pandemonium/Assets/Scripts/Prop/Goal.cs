@@ -1,12 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.Events;
 
 [System.Serializable]
 public class ScoredEvent : UnityEvent<GameObject>
 {
-
+    
 }
 
 [System.Serializable]
@@ -24,7 +25,7 @@ public class Goal : MonoBehaviour
     public ScoredEvent defaultEvent;
     void Start()
     {
- 
+
     }
     void OnTriggerEnter(Collider other)
     {
