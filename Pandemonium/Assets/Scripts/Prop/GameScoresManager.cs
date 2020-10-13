@@ -115,15 +115,15 @@ public class GameScoresManager : MonoBehaviour
 
     public void FindWinner()
     {
-        int currentHighestScore = -1; //This helps with deciding ties since the lowest score is 0
+        int currentLowestScore = 1000; //This helps with deciding ties since no one should get 1000 points
         List<string> colorWithHighestScore = new List<string>(); //Red = 0; Green = 1; Yellow = 2; Blue = 3;
         List<GameObject> ListofWinners = new List<GameObject>();
         int index = -1;
         for(int i = 0; i < PlayerGameScores.Count; ++i)
         {
-            if(PlayerGameScores[i] >= currentHighestScore)
+            if(PlayerGameScores[i] <= currentLowestScore)
             {
-                currentHighestScore = PlayerGameScores[i];
+                currentLowestScore = PlayerGameScores[i];
                 index = i;
             }
         }
@@ -134,17 +134,13 @@ public class GameScoresManager : MonoBehaviour
         //ListofWinners.Add(Players[index]); //Add that player to a list of winners for this mini-game
         for (int i = 0; i < PlayerGameScores.Count; ++i)
         {
-            if(PlayerGameScores[i] == currentHighestScore)
+            if(PlayerGameScores[i] == currentLowestScore)
             {
                 colorWithHighestScore.Add(colors[i]);
                 //ListofWinners.Add(Players[i]); List of players doesn't exist yet
             }
         }
-        for(int i = 0; i < colorWithHighestScore.Count; i++)
-        {
-            //Debug.Log(colorWithHighestScore[i]);
-        }
-        DisplayWinner(colorWithHighestScore, currentHighestScore);
+        DisplayWinner(colorWithHighestScore, currentLowestScore);
     }
 
     public void DisplayWinner(List<string> colorsWithHighestScore, int highestScore)
