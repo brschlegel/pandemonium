@@ -29,16 +29,6 @@ public class JoinerScript : MonoBehaviour
         materialPerPlayer.Add(Player4);
         count = 0;
     }
-    void Start()
-    {
-     
-    
-        
-        rendererSelector = transform.GetChild(0).GetComponent<RendererSelector>();
-       
-        
-     
-    }
 
     public void OnPlayerJoined(PlayerInput playerInput){
         if(pim.maxPlayerCount > count ){
@@ -57,10 +47,8 @@ public class JoinerScript : MonoBehaviour
     void changePrefab(GameObject g)
     {
         MeshRenderer mr = g.transform.GetChild(1).GetComponent<MeshRenderer>();
-        //for(int i = 0; i < mr.materials.Length; i++){
-            
-            //mr.materials = Player4;
-                mr.materials = materialPerPlayer[count];
-        //}
+      
+        mr.materials = materialPerPlayer[count];
+     
     }
 }
