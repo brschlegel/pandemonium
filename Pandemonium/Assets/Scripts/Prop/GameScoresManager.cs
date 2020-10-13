@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
@@ -14,11 +15,12 @@ public class GameScoresManager : MonoBehaviour
     public bool isActive; // Allows players to score
 
     public GameObject canvas;
-
+    public Text TempWinnerText; //In the full game, the winner isn't displayed in this scene
 
     public string currentMinigame; //There's no way to put variables in the text inspector so this keeps the script universal
     void Start()
     {
+        TempWinnerText.gameObject.SetActive(false); //Disabled in the beginning
         GameScoreSetup();
         CreateScoreText();
     }
@@ -111,7 +113,63 @@ public class GameScoresManager : MonoBehaviour
         isActive = false;
     }
 
+    public void FindWinner()
+    {
+        int currentHighestScore = -1; //This helps with deciding ties since the lowest score is 0
+        List<string> colorWithHighestScore = new List<string>(); //Red = 0; Green = 1; Yellow = 2; Blue = 3;
+        List<GameObject> ListofWinners = new List<GameObject>();
+        int index = -1;
+        for(int i = 0; i < PlayerGameScores.Count; ++i)
+        {
+            if(PlayerGameScores[i] >= currentHighestScore)
+            {
+                currentHighestScore = PlayerGameScores[i];
+                index = i;
+            }
+        }
+        colorWithHighestScore.Add(colors[index]);
+        PlayerGameScores.RemoveAt(index); //Removes the highest score from the list to make it easier to calculate ties
+        colors.RemoveAt(index); //Remove the color from the pool of possible ties
+        //Players.RemoveAt(index); //This might break something, but I'd need to test it first. Also there's currently no list of players
+        //ListofWinners.Add(Players[index]); //Add that player to a list of winners for this mini-game
+        for (int i = 0; i < PlayerGameScores.Count; ++i)
+        {
+            if(PlayerGameScores[i] == currentHighestScore)
+            {
+                colorWithHighestScore.Add(colors[i]);
+                //ListofWinners.Add(Players[i]); List of players doesn't exist yet
+            }
+        }
+        for(int i = 0; i < colorWithHighestScore.Count; i++)
+        {
+            //Debug.Log(colorWithHighestScore[i]);
+        }
+        DisplayWinner(colorWithHighestScore, currentHighestScore);
+    }
 
-
-
+    public void DisplayWinner(List<string> colorsWithHighestScore, int highestScore)
+    {
+        TempWinnerText.gameObject.SetActive(true);
+        if(colorsWithHighestScore.Count > 1) //There's a tie
+        {
+            TempWinnerText.text = "Winners are ";
+            Debug.Log(colorsWithHighestScore.Count + " is count");
+            for(int i = 0; i < colorsWithHighestScore.Count; i++)
+            {
+                if (i != colorsWithHighestScore.Count-1)
+                {
+                    TempWinnerText.text = TempWinnerText.text + colorsWithHighestScore[i] + ", ";
+                }
+                else //No comma since it's the last winner
+                {
+                    TempWinnerText.text = TempWinnerText.text + "and " + colorsWithHighestScore[i] + " ";
+                }
+            }
+            TempWinnerText.text = TempWinnerText.text + "with a score of " + highestScore + "!";
+        }
+        else //No tie only 1 winner
+        {
+            TempWinnerText.text = colorsWithHighestScore[0] + " wins with a score of " + highestScore + "!";
+        }
+    }
 }

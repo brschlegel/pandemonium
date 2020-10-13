@@ -26,7 +26,7 @@ public class Spawner : MonoBehaviour
         {
             InvokeRepeating("Spawn", startDelay, timedInterval);
         }
-        Spawn();
+        //Spawn(); //The initial spawn is now triggered by the Game Timer object
         queueIndex = 0;
 
     }

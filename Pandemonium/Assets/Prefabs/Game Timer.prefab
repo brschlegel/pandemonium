@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1842574983062313900
+--- !u!1 &1709382922943246479
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,43 +8,42 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1842574983062313890}
-  - component: {fileID: 1842574983062313891}
-  - component: {fileID: 1842574983062313889}
+  - component: {fileID: 1709382922943246473}
+  - component: {fileID: 1709382922943246474}
   m_Layer: 0
-  m_Name: Timer Manager
-  m_TagString: Untagged
+  m_Name: Game Timer
+  m_TagString: Score
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1842574983062313890
+--- !u!4 &1709382922943246473
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1842574983062313900}
+  m_GameObject: {fileID: 1709382922943246479}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 77, y: 366, z: 0}
+  m_LocalPosition: {x: -3.61486, y: 3.597735, z: -3.9351654}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1842574983062313891
+--- !u!114 &1709382922943246474
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1842574983062313900}
+  m_GameObject: {fileID: 1709382922943246479}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2caa5c6d9b7492b47998e00137121e36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeRemaining: 10
+  timeRemaining: 20
   beginAfter: 2
   timerText: {fileID: 0}
   gameScoreManager: {fileID: 0}
@@ -52,7 +51,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   eventTagMap:
-  - tag: AllowScoring
+  - tag: 
     tagEvent:
       m_PersistentCalls:
         m_Calls:
@@ -68,7 +67,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-  - tag: DisableScoring
+  - tag: 
     tagEvent:
       m_PersistentCalls:
         m_Calls:
@@ -84,17 +83,3 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
---- !u!114 &1842574983062313889
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1842574983062313900}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93abd3b1c4a91cc4989f35b2ec9694c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tags:
-  - Score

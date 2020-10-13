@@ -11,6 +11,7 @@ public class Timer : MonoBehaviour
     public float beginAfter; //Starts game timer after x seconds, default is 0. This is for countdowns, game intros etc.
     private bool timerRunning;
     public Text timerText;
+    public Text startupText;
     public GameObject gameScoreManager; //Score manager the timer is linked to
 
     public ScoredEvent defaultEvent;
@@ -28,12 +29,13 @@ public class Timer : MonoBehaviour
     {
         if (beginAfter >= 0) //Checks to see if there's a countdown before timer starts
         {
-            Debug.Log("Players cannot collect points for another " + beginAfter + " seconds");
+            DisplayStartupText(); //Displays the startup text with the countdown
             beginAfter -= Time.deltaTime;
             if (beginAfter <= 0)
             {
                 timerRunning = true;
-                TriggerStart(gameScoreManager); //Lets the game score manager begin to collect points
+                startupText.gameObject.SetActive(false); //Hides the startup text
+                TriggerStart(); //Lets the game score manager begin to collect points
             }
         }
         if (timeRemaining > 0 && timerRunning == true)
@@ -49,7 +51,7 @@ public class Timer : MonoBehaviour
         {
             if(timerRunning == true)
             {
-                TriggerEnd(gameScoreManager); //Stops the game score manager from getting additional points
+                TriggerEnd(); //Stops the game score manager from getting additional points
             }
             timerRunning = false; //Stops the timer
         }
@@ -63,24 +65,29 @@ public class Timer : MonoBehaviour
         timerText.text = string.Format("Time Left: {0:0}", timeLeft);
     }
 
-    public void TriggerEnd(GameObject ScoreManager) //Disables players from collecting points
+    public void TriggerEnd() //Disables players from collecting points
     {
-        if (ScoreManager.gameObject.tag == "Score")
+        if (gameScoreManager.gameObject.tag == "Score")
         {
-            Debug.Log("Players can no longer collect points");
-            eventTagMap[1].tagEvent.Invoke(ScoreManager.gameObject); //Runs whatever's under the first tag which is "Disable Scoring"
+            eventTagMap[1].tagEvent.Invoke(gameScoreManager.gameObject); //Runs whatever's under the first tag which is "Disable Scoring"
             return;
         }
     }
 
-    public void TriggerStart(GameObject ScoreManager) //Allows players to collect points
+    public void TriggerStart() //Allows players to collect points
     {
-        if (ScoreManager.gameObject.tag == "Score")
+        if (gameScoreManager.gameObject.tag == "Score")
         {
-            Debug.Log("Players can now collect points for " + timeRemaining + " seconds");
-            eventTagMap[0].tagEvent.Invoke(ScoreManager.gameObject);
+            eventTagMap[0].tagEvent.Invoke(gameScoreManager.gameObject);
             return;
         }
+    }
+
+    public void DisplayStartupText()
+    {
+        startupText.gameObject.SetActive(true);
+        float timeLeft = Mathf.FloorToInt(beginAfter);
+        startupText.text = string.Format("Game begins in: {0:0}", timeLeft);
     }
 }
 

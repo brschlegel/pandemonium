@@ -191,7 +191,7 @@ Transform:
   m_GameObject: {fileID: 6223931530694216807}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1.84, z: 0}
-  m_LocalScale: {x: 0.02, y: 0.02, z: 0.02}
+  m_LocalScale: {x: 0.03, y: 0.03, z: 0.03}
   m_Children:
   - {fileID: 6223931529864290760}
   - {fileID: 5738784066838104247}
@@ -236,7 +236,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotatorGO: {fileID: 5336577752014267742}
   rb: {fileID: 6223931530694216806}
-  speed: 10
+  speed: 15
   maxVelocityChange: 10
   dashTime: 0.25
   dashSpeed: 15
@@ -351,8 +351,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af377c84e6bd0654fabe1b9b98b00c76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: 
-  score: 0
+  playerName: 
+  overallScore: 0
   money: 0
 --- !u!65 &3753079075802350188
 BoxCollider:
