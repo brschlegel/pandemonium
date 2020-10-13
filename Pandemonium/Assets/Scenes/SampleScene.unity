@@ -123,6 +123,40 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &293701167 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1734232798927639994, guid: 261cad3d9dd7fb64186b88c1a25a871d, type: 3}
+  m_PrefabInstance: {fileID: 1734232798026764641}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &293701168 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1734232798927639997, guid: 261cad3d9dd7fb64186b88c1a25a871d, type: 3}
+  m_PrefabInstance: {fileID: 1734232798026764641}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 293701167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 621567455fd1c4ceb811cc8a00b6a1a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &293701170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 293701167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83b1de87159912546be1652f9cfa4adf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pim: {fileID: 293701168}
+  prefabs:
+  - {fileID: 6223931530694216807, guid: 5237539b0d73160469d7a42eafc8d315, type: 3}
+  - {fileID: 6429195957768400890, guid: c72030bb58b4de345ba4bbf5dc8d0eee, type: 3}
+  - {fileID: 5686544710689504544, guid: 9570d75c599091d4bbf6a74bcceeca08, type: 3}
+  - {fileID: 5918056976756834506, guid: 133c549df86d28c4eb58b2947b651395, type: 3}
 --- !u!1 &568996702
 GameObject:
   m_ObjectHideFlags: 0
@@ -710,6 +744,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1734232798927639997, guid: 261cad3d9dd7fb64186b88c1a25a871d, type: 3}
+      propertyPath: m_PlayerPrefab
+      value: 
+      objectReference: {fileID: 6223931530694216807, guid: 5237539b0d73160469d7a42eafc8d315, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 261cad3d9dd7fb64186b88c1a25a871d, type: 3}
 --- !u!1001 &3202920635134816940
