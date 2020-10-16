@@ -5,16 +5,14 @@ using UnityEngine;
 public class PlayerInfo : MonoBehaviour
 {
     // Start is called before the first frame update
-    public string playerName;
-    public int overallScore;
+    public string name;
+    public int score;
     public int money;
-    List<GameObject> itemInventory;
     void Start()
     {
-        playerName = gameObject.name;
-        overallScore = 0;
+        name = gameObject.name;
+        score = 0;
         money = 0;
-        itemInventory = new List<GameObject>();
     }
 
     // Update is called once per frame
