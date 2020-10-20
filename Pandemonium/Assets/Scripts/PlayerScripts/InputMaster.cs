@@ -155,6 +155,71 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""SceneChange"",
+            ""id"": ""07777c77-6fee-43cb-9afa-95e38db59acd"",
+            ""actions"": [
+                {
+                    ""name"": ""Scene1"",
+                    ""type"": ""Button"",
+                    ""id"": ""f21e579e-73a1-455b-bb6f-451953ca1497"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Scene2"",
+                    ""type"": ""Button"",
+                    ""id"": ""f3af779f-2579-4fdc-9349-74842cc5e8ba"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Scene3"",
+                    ""type"": ""Button"",
+                    ""id"": ""8cbe7c65-e4a2-4071-8e72-118f6c27d746"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""7741aeec-9581-463d-96a0-9fbc74e710ea"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Scene1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""82c7accd-e509-4737-a8f6-f337a0c1bec7"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Scene2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b7f4f7ba-6381-4472-a368-671af650646f"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Scene3"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -187,6 +252,11 @@ public class @InputMaster : IInputActionCollection, IDisposable
         m_Hub_Movement = m_Hub.FindAction("Movement", throwIfNotFound: true);
         m_Hub_Jump = m_Hub.FindAction("Jump", throwIfNotFound: true);
         m_Hub_Dash = m_Hub.FindAction("Dash", throwIfNotFound: true);
+        // SceneChange
+        m_SceneChange = asset.FindActionMap("SceneChange", throwIfNotFound: true);
+        m_SceneChange_Scene1 = m_SceneChange.FindAction("Scene1", throwIfNotFound: true);
+        m_SceneChange_Scene2 = m_SceneChange.FindAction("Scene2", throwIfNotFound: true);
+        m_SceneChange_Scene3 = m_SceneChange.FindAction("Scene3", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -281,6 +351,55 @@ public class @InputMaster : IInputActionCollection, IDisposable
         }
     }
     public HubActions @Hub => new HubActions(this);
+
+    // SceneChange
+    private readonly InputActionMap m_SceneChange;
+    private ISceneChangeActions m_SceneChangeActionsCallbackInterface;
+    private readonly InputAction m_SceneChange_Scene1;
+    private readonly InputAction m_SceneChange_Scene2;
+    private readonly InputAction m_SceneChange_Scene3;
+    public struct SceneChangeActions
+    {
+        private @InputMaster m_Wrapper;
+        public SceneChangeActions(@InputMaster wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Scene1 => m_Wrapper.m_SceneChange_Scene1;
+        public InputAction @Scene2 => m_Wrapper.m_SceneChange_Scene2;
+        public InputAction @Scene3 => m_Wrapper.m_SceneChange_Scene3;
+        public InputActionMap Get() { return m_Wrapper.m_SceneChange; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(SceneChangeActions set) { return set.Get(); }
+        public void SetCallbacks(ISceneChangeActions instance)
+        {
+            if (m_Wrapper.m_SceneChangeActionsCallbackInterface != null)
+            {
+                @Scene1.started -= m_Wrapper.m_SceneChangeActionsCallbackInterface.OnScene1;
+                @Scene1.performed -= m_Wrapper.m_SceneChangeActionsCallbackInterface.OnScene1;
+                @Scene1.canceled -= m_Wrapper.m_SceneChangeActionsCallbackInterface.OnScene1;
+                @Scene2.started -= m_Wrapper.m_SceneChangeActionsCallbackInterface.OnScene2;
+                @Scene2.performed -= m_Wrapper.m_SceneChangeActionsCallbackInterface.OnScene2;
+                @Scene2.canceled -= m_Wrapper.m_SceneChangeActionsCallbackInterface.OnScene2;
+                @Scene3.started -= m_Wrapper.m_SceneChangeActionsCallbackInterface.OnScene3;
+                @Scene3.performed -= m_Wrapper.m_SceneChangeActionsCallbackInterface.OnScene3;
+                @Scene3.canceled -= m_Wrapper.m_SceneChangeActionsCallbackInterface.OnScene3;
+            }
+            m_Wrapper.m_SceneChangeActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Scene1.started += instance.OnScene1;
+                @Scene1.performed += instance.OnScene1;
+                @Scene1.canceled += instance.OnScene1;
+                @Scene2.started += instance.OnScene2;
+                @Scene2.performed += instance.OnScene2;
+                @Scene2.canceled += instance.OnScene2;
+                @Scene3.started += instance.OnScene3;
+                @Scene3.performed += instance.OnScene3;
+                @Scene3.canceled += instance.OnScene3;
+            }
+        }
+    }
+    public SceneChangeActions @SceneChange => new SceneChangeActions(this);
     private int m_PS4SchemeIndex = -1;
     public InputControlScheme PS4Scheme
     {
@@ -304,5 +423,11 @@ public class @InputMaster : IInputActionCollection, IDisposable
         void OnMovement(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnDash(InputAction.CallbackContext context);
+    }
+    public interface ISceneChangeActions
+    {
+        void OnScene1(InputAction.CallbackContext context);
+        void OnScene2(InputAction.CallbackContext context);
+        void OnScene3(InputAction.CallbackContext context);
     }
 }

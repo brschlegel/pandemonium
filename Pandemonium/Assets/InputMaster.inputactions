@@ -142,6 +142,71 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "SceneChange",
+            "id": "07777c77-6fee-43cb-9afa-95e38db59acd",
+            "actions": [
+                {
+                    "name": "Scene1",
+                    "type": "Button",
+                    "id": "f21e579e-73a1-455b-bb6f-451953ca1497",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Scene2",
+                    "type": "Button",
+                    "id": "f3af779f-2579-4fdc-9349-74842cc5e8ba",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Scene3",
+                    "type": "Button",
+                    "id": "8cbe7c65-e4a2-4071-8e72-118f6c27d746",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "7741aeec-9581-463d-96a0-9fbc74e710ea",
+                    "path": "<Keyboard>/1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Scene1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "82c7accd-e509-4737-a8f6-f337a0c1bec7",
+                    "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Scene2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b7f4f7ba-6381-4472-a368-671af650646f",
+                    "path": "<Keyboard>/3",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Scene3",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [
