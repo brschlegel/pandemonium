@@ -236,12 +236,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotatorGO: {fileID: 5336577752014267742}
   rb: {fileID: 6223931530694216806}
-  speed: 15
-  maxVelocityChange: 10
-  dashTime: 0.25
-  dashSpeed: 15
-  dashCooldown: 1.5
-  frictionCoeff: 0.8
+  speed: 20
+  maxVelocityChange: 40
+  dashTime: 0.15
+  dashSpeed: 75
+  dashCooldown: 0.5
+  frictionCoeff: 0.9
   gravity: 10
   jumpMaxVelocityChangeRatio: 0.6666
   jumpMovementVelocityRatio: 0.5
@@ -351,8 +351,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af377c84e6bd0654fabe1b9b98b00c76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerName: 
-  overallScore: 0
+  name: 
+  score: 0
   money: 0
 --- !u!65 &3753079075802350188
 BoxCollider:

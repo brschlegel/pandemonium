@@ -35,7 +35,7 @@ public class GameScoresManager : MonoBehaviour
         isActive = false;
         PlayerGameScores = new List<int>();
         PlayerScoreTextList = new List<Text>();
-        colors.AddRange(new List<string> { "Red", "Blue", "Green", "Yellow" }); //This makes it so it doesn't always display 4 people's worth of scores every time
+        colors.AddRange(new List<string> { "Green", "Blue", "Purple", "Yellow" }); //This makes it so it doesn't always display 4 people's worth of scores every time
         for (int i = 0; i < 4; i++) //4 is hardcoded in for testing purposes, will change to Player count later
         {
             PlayerGameScores.Add(0); //Everyone starts the mini-game with 0 points.
