@@ -24,6 +24,9 @@ public class ShopManager : MonoBehaviour
     public GameObject challengeShopPrefab;
     public GameObject universalShopPrefab;
 
+    public GameObject standardShopkeeper;
+    public GameObject easterEggShopkeeper;
+
     public int shopCount;
     public int itemCount;
 
@@ -35,6 +38,7 @@ public class ShopManager : MonoBehaviour
     public List<GameObject> universalShopCatalogue;
 
     public List<Vector3> shopLocList;
+    public List<Vector3> shopkeeperList;
 
     // List of randomly picked shops
     public List<ShopType> shopList;
@@ -43,8 +47,8 @@ public class ShopManager : MonoBehaviour
     {
         rand = new System.Random();
 
-        // Determine temporary world positions for the shops
-        DetermineShopLoc();
+        // Determine world positions for the shops and shopkeepers
+        DetermineLocs();
 
         // Chooses "numOfSpawnedShops" random shop types and adds it to a collection
         PickRandomShops();
@@ -58,13 +62,19 @@ public class ShopManager : MonoBehaviour
     {
     }
 
-    public void DetermineShopLoc()
+    public void DetermineLocs()
     {
         shopLocList = new List<Vector3>();
-        shopLocList.Add(new Vector3(-30f, 4f, 15f));
-        shopLocList.Add(new Vector3(0f, 4f, 15f));
-        shopLocList.Add(new Vector3(30f, 4f, 15f));
+        shopLocList.Add(new Vector3(-30f, 0f, 15f));
+        shopLocList.Add(new Vector3(0f, 0f, 15f));
+        shopLocList.Add(new Vector3(30f, 0f, 15f));
+
+        shopkeeperList = new List<Vector3>();
+        shopkeeperList.Add(new Vector3(-30f, 2f, 14f));
+        shopkeeperList.Add(new Vector3(0f, 2f, 14f));
+        shopkeeperList.Add(new Vector3(30f, 2f, 14f));
     }
+
 
     /// <summary>
     /// Utility function to pick random elements out of a master list
@@ -115,6 +125,15 @@ public class ShopManager : MonoBehaviour
     {
         for(int i = 0; i < shopList.Count; ++i)
         {
+            int randNum = rand.Next(0, 6); //20% chance to spawn easter egg shopkeeper
+            if(randNum == 5)
+            {
+                Instantiate(easterEggShopkeeper, shopkeeperList[i], Quaternion.Euler(-90f, -180f, 0f));
+            }
+            else
+            {
+                Instantiate(standardShopkeeper,shopkeeperList[i], Quaternion.Euler(0f, -180f, 0f));
+            }
             switch (shopList[i])
             {
                 case ShopType.Buff:
