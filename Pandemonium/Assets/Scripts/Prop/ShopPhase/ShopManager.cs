@@ -18,8 +18,12 @@ public class ShopManager : MonoBehaviour
         Count // <-- # of distinct shop types
     };
 
-    public GameObject shopPrefab;
-    
+    public GameObject buffShopPrefab;
+    public GameObject sabotageShopPrefab;
+    public GameObject doubleShopPrefab;
+    public GameObject challengeShopPrefab;
+    public GameObject universalShopPrefab;
+
     public int shopCount;
     public int itemCount;
 
@@ -57,9 +61,9 @@ public class ShopManager : MonoBehaviour
     public void DetermineShopLoc()
     {
         shopLocList = new List<Vector3>();
-        shopLocList.Add(new Vector3(1.8f, 5.24f, 1.8f));
-        shopLocList.Add(new Vector3(15.4f, 5.24f, 1.8f));
-        shopLocList.Add(new Vector3(29.7f, 5.24f, 1.8f));
+        shopLocList.Add(new Vector3(-30f, 4f, 15f));
+        shopLocList.Add(new Vector3(0f, 4f, 15f));
+        shopLocList.Add(new Vector3(30f, 4f, 15f));
     }
 
     /// <summary>
@@ -111,28 +115,35 @@ public class ShopManager : MonoBehaviour
     {
         for(int i = 0; i < shopList.Count; ++i)
         {
-            GameObject shop = Instantiate(shopPrefab,shopLocList[i], Quaternion.identity);
-            ShopInfo si = shop.GetComponent<ShopInfo>();
-
             switch (shopList[i])
             {
                 case ShopType.Buff:
+                    GameObject shop = Instantiate(buffShopPrefab, shopLocList[i], Quaternion.Euler(0f,-90f,0f));
+                    ShopInfo si = shop.GetComponent<ShopInfo>();
                     si.shopName = "Self-Buff Store";
                     GenerateSubList(buffShopCatalogue, out si.inventory, itemCount);
                     break;
                 case ShopType.Nerf:
+                    shop = Instantiate(sabotageShopPrefab, shopLocList[i], Quaternion.Euler(0f, -90f, 0f));
+                    si = shop.GetComponent<ShopInfo>();
                     si.shopName = "Sabotage Store";
                     GenerateSubList(sabotageShopCatalogue, out si.inventory, itemCount);
                     break;
                 case ShopType.Double:
+                    shop = Instantiate(doubleShopPrefab, shopLocList[i], Quaternion.Euler(0f, -90f, 0f));
+                    si = shop.GetComponent<ShopInfo>();
                     si.shopName = "Double-Edged Store";
                     GenerateSubList(doubleShopCatalogue, out si.inventory, itemCount);
                     break;
                 case ShopType.Challenge:
+                    shop = Instantiate(challengeShopPrefab, shopLocList[i], Quaternion.Euler(0f, -90f, 0f));
+                    si = shop.GetComponent<ShopInfo>();
                     si.shopName = "Challenge Store";
                     GenerateSubList(challengeShopCatalogue, out si.inventory, itemCount);
                     break;
                 case ShopType.Universal:
+                    shop = Instantiate(universalShopPrefab, shopLocList[i], Quaternion.Euler(0f, -90f, 0f));
+                    si = shop.GetComponent<ShopInfo>();
                     si.shopName = "Universal Store";
                     GenerateSubList(universalShopCatalogue, out si.inventory, itemCount);
                     break;

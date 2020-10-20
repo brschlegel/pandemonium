@@ -17,7 +17,6 @@ public class ShopInfo : MonoBehaviour
     void Start()
     {
         maxRange = 5;
-        Debug.Log(this.transform.position);
     }
 
     // Update is called once per frame
