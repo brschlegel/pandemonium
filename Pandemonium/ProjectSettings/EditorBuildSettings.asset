@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TestScenes/Durrell/Test2_Durrell.unity
     guid: 05f3f462cef5ec0418aa543228adb912
+  - enabled: 1
+    path: Assets/Scenes/Menu.unity
+    guid: 1e4c474027d5da145b6218e2aa7a3116
+  - enabled: 1
+    path: Assets/Scenes/ShopPhase.unity
+    guid: 11320fab764c5d043b05e3e4a58172a6
   m_configObjects: {}

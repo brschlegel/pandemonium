@@ -21,7 +21,7 @@ public class Timer : MonoBehaviour
     void Start()
     {
         timerRunning = false;
-        timerText.text = string.Format("Time Left: {0:0}", timeRemaining); //Displays filler text if there's a countdown before timer starts
+        timerText.text = string.Format("{0:0}", timeRemaining); //Displays filler text if there's a countdown before timer starts
     }
 
     // Update is called once per frame
@@ -62,7 +62,7 @@ public class Timer : MonoBehaviour
     {
         float timeLeft = Mathf.FloorToInt(timeToDisplay);
 
-        timerText.text = string.Format("Time Left: {0:0}", timeLeft);
+        timerText.text = string.Format("{0:0}", timeLeft);
     }
 
     public void TriggerEnd() //Disables players from collecting points

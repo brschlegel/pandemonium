@@ -17,6 +17,11 @@ public class GameScoresManager : MonoBehaviour
     public GameObject canvas;
     public Text TempWinnerText; //In the full game, the winner isn't displayed in this scene
 
+    public Text Green_Score_txt;
+    public Text Blue_Score_txt;
+    public Text Purple_Score_txt;
+    public Text Yellow_Score_txt;
+
     public string currentMinigame; //There's no way to put variables in the text inspector so this keeps the script universal
     void Start()
     {
@@ -28,6 +33,7 @@ public class GameScoresManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+       
     }
 
     public void GameScoreSetup()
@@ -73,7 +79,8 @@ public class GameScoresManager : MonoBehaviour
         {
             PlayerGameScores[0] += 1;
             PlayerScoreTextList[0].text = colors[0] + ": " + PlayerGameScores[0];
-        }
+            Green_Score_txt.text = PlayerGameScores[0].ToString();
+}
     }
 
     public void Player1Score()
