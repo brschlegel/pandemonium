@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: sky
+  m_Name: Testing_Skybox
   m_Shader: {fileID: 104, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -20,7 +20,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BackTex:
-        m_Texture: {fileID: 2800000, guid: 291c855ff66e1ae4a98081420700dba5, type: 3}
+        m_Texture: {fileID: 2800000, guid: 1b50f4b8e775a444e82eab91f5600179, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
@@ -40,7 +40,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DownTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: e15aeb1a0faf6a346999b1866fb9244c, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
@@ -48,11 +48,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _FrontTex:
-        m_Texture: {fileID: 2800000, guid: 291c855ff66e1ae4a98081420700dba5, type: 3}
+        m_Texture: {fileID: 2800000, guid: 1b50f4b8e775a444e82eab91f5600179, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _LeftTex:
-        m_Texture: {fileID: 2800000, guid: 96ec7ae29e95609419bfdf95451eae36, type: 3}
+        m_Texture: {fileID: 2800000, guid: 1b50f4b8e775a444e82eab91f5600179, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
@@ -72,7 +72,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _RightTex:
-        m_Texture: {fileID: 2800000, guid: 96ec7ae29e95609419bfdf95451eae36, type: 3}
+        m_Texture: {fileID: 2800000, guid: 1b50f4b8e775a444e82eab91f5600179, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _UpTex:

@@ -66,4 +66,5 @@ public class SceneLoader : MonoBehaviour
             StartCoroutine(LoadScene(sceneNames[2]));
         }
     }
+    
 }
