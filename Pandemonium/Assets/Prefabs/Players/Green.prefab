@@ -175,6 +175,7 @@ GameObject:
   - component: {fileID: -4663573385683330560}
   - component: {fileID: 2498026945569578181}
   - component: {fileID: 3753079075802350188}
+  - component: {fileID: 6171277279843697941}
   m_Layer: 0
   m_Name: Green
   m_TagString: MainCollider
@@ -320,6 +321,18 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: de977fc1-1022-4049-ac98-f527659d67b1
     m_ActionName: Hub/Dash[/Keyboard/e,/DualShock4GamepadHID/buttonWest,/DualShock4GamepadHID/buttonWest]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: f21e579e-73a1-455b-bb6f-451953ca1497
+    m_ActionName: SceneChange/Scene1[/Keyboard/1]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: f3af779f-2579-4fdc-9349-74842cc5e8ba
+    m_ActionName: SceneChange/Scene2[/Keyboard/2]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 8cbe7c65-e4a2-4071-8e72-118f6c27d746
+    m_ActionName: SceneChange/Scene3[/Keyboard/3]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Hub
@@ -363,7 +376,21 @@ BoxCollider:
   m_GameObject: {fileID: 6223931530694216807}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 88.51868, y: 113.62453, z: 91.1065}
   m_Center: {x: 1.5065521, y: 0.92313886, z: -2.5877953}
+--- !u!136 &6171277279843697941
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6223931530694216807}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
