@@ -10,7 +10,6 @@ public class GameScoresManager : MonoBehaviour
     //This is for the current mini-game's score. Not overall
     private List<GameObject> Players; //I'd like to make it so I can just reference this somewhere someday without making a new list of players each time
     private List<int> PlayerGameScores;
-    private List<Text> PlayerScoreTextList;
     private List<string> colors = new List<string>();
     public bool isActive; // Allows players to score
 
@@ -27,7 +26,6 @@ public class GameScoresManager : MonoBehaviour
     {
         TempWinnerText.gameObject.SetActive(false); //Disabled in the beginning
         GameScoreSetup();
-        CreateScoreText();
     }
 
     // Update is called once per frame
@@ -40,23 +38,10 @@ public class GameScoresManager : MonoBehaviour
     {
         isActive = false;
         PlayerGameScores = new List<int>();
-        PlayerScoreTextList = new List<Text>();
         colors.AddRange(new List<string> { "Green", "Blue", "Purple", "Yellow" }); //This makes it so it doesn't always display 4 people's worth of scores every time
         for (int i = 0; i < 4; i++) //4 is hardcoded in for testing purposes, will change to Player count later
         {
             PlayerGameScores.Add(0); //Everyone starts the mini-game with 0 points.
-        }
-    }
-
-    public void CreateScoreText() //Creates and displays the current # of points depending on the mini-game and # of players
-    {
-        if(currentMinigame == "Soccer")
-        {
-
-            for(int i = 0; i < 4; i++)
-            {
-                PlayerScoreTextList.Add(CreateText(i,"Arial.ttf",14, new Vector2(80,30), new Vector3((Screen.width / 10), Screen.height - (Screen.height / 15), 0f), Screen.width / 6, 0)); //Add to a list so I can reference it later
-            }
         }
     }
 
@@ -78,7 +63,6 @@ public class GameScoresManager : MonoBehaviour
         if (isActive == true)
         {
             PlayerGameScores[0] += 1;
-            PlayerScoreTextList[0].text = colors[0] + ": " + PlayerGameScores[0];
             Green_Score_txt.text = PlayerGameScores[0].ToString();
 }
     }
@@ -88,7 +72,7 @@ public class GameScoresManager : MonoBehaviour
         if(isActive == true)
         {
             PlayerGameScores[1] += 1;
-            PlayerScoreTextList[1].text = colors[1] + ": " + PlayerGameScores[1];
+            Blue_Score_txt.text = PlayerGameScores[1].ToString();
         }
     }
 
@@ -97,7 +81,7 @@ public class GameScoresManager : MonoBehaviour
         if(isActive == true)
         {
             PlayerGameScores[2] += 1;
-            PlayerScoreTextList[2].text = colors[2] + ": " + PlayerGameScores[2];
+            Purple_Score_txt.text = PlayerGameScores[2].ToString();
         }
     }
 
@@ -106,7 +90,7 @@ public class GameScoresManager : MonoBehaviour
         if(isActive == true)
         {
             PlayerGameScores[3] += 1;
-            PlayerScoreTextList[3].text = colors[3] + ": " + PlayerGameScores[3];
+            Yellow_Score_txt.text = PlayerGameScores[3].ToString();
         }
     }
 
