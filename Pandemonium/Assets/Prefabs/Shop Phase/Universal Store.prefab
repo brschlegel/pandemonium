@@ -50,6 +50,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shopName: 
   inventory: []
+  shopNumber: 0
+  speechBubble: {fileID: 7445560141101828039, guid: e3742571865ed4a44af381885b6944d1, type: 3}
 --- !u!64 &6431170486999596754
 MeshCollider:
   m_ObjectHideFlags: 0
