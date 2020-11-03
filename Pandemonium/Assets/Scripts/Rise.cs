@@ -4,15 +4,35 @@ using UnityEngine;
 
 public class Rise : MonoBehaviour
 {
+    public float riseSpeed = .001f;
+    public Stack<GameObject> podium;
+   
     // Start is called before the first frame update
     void Start()
     {
-        
+        podium = new Stack<GameObject>();
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        transform.Translate(new Vector3(0f, 0f, 0.001f));
+        transform.Translate(new Vector3(0f, 0f, riseSpeed));
+        if(podium.Count > 3){
+            FindPlacements();
+        }
+    }
+
+    public void ElimPlayer(GameObject player){
+        player.transform.position = new Vector3(0,-100, 0);
+        podium.Push(player);
+        Debug.Log("Eliminated");
+    }
+
+    public void FindPlacements(){
+       int length = podium.Count;
+       for(int i =0; i < length; i ++){
+           Debug.Log("Number " + i + ": " + podium.Pop().GetComponent<PlayerInfo>().name);
+       }
+
     }
 }
