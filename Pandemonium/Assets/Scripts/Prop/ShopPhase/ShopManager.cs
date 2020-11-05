@@ -65,9 +65,9 @@ public class ShopManager : MonoBehaviour
     public void DetermineLocs()
     {
         shopLocList = new List<Vector3>();
-        shopLocList.Add(new Vector3(-30f, -302.5f, -65f));
-        shopLocList.Add(new Vector3(0f, -302.5f, -65f));
-        shopLocList.Add(new Vector3(30f, -302.5f, -65f));
+        shopLocList.Add(new Vector3(-30f, .4f, 14f));
+        shopLocList.Add(new Vector3(0f, .4f, 14f));
+        shopLocList.Add(new Vector3(30f, .4f, 14f));
 
         shopkeeperList = new List<Vector3>();
         shopkeeperList.Add(new Vector3(-30f, 2f, 14f));
@@ -75,6 +75,7 @@ public class ShopManager : MonoBehaviour
         shopkeeperList.Add(new Vector3(30f, 2f, 14f));
     }
 
+    //-30,4,11
 
     /// <summary>
     /// Utility function to pick random elements out of a master list

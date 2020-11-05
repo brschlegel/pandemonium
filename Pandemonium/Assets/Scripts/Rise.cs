@@ -46,7 +46,11 @@ public class Rise : MonoBehaviour
     public void FindPlacements(){
        int length = podium.Count;
        for(int i =0; i < length; i ++){
-           Debug.Log("Number " + i + ": " + podium.Pop().GetComponent<PlayerInfo>().name);
+            GameObject player = podium.Pop();
+            PlayerInfo pi = player.GetComponent<PlayerInfo>();
+            pi.score += 15 - i*5; //If first with 4 ppl, 15 points and last gets 0. This is flawed if there's less ppl, should change this
+            pi.money += 20 - i*5; //If first with 4 ppl 20 coins, and last place gets 5
+            Debug.Log("Number " + i + ": " + pi.name);
        }
 
     }

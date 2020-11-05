@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Security.Claims;
 using UnityEngine;
 
 public class ShopInfo : MonoBehaviour
@@ -31,8 +32,26 @@ public class ShopInfo : MonoBehaviour
     public void DisplayInventory()
     {
         speechBubble = Instantiate(speechBubble, DetermineBubbleLoc(), Quaternion.identity);
+        for(int i = 0; i < inventory.Count; ++i)
+        {
+            inventory[i] = Instantiate(inventory[i], DetermineItemLoc(i), inventory[i].transform.rotation);
+        }
     }
 
+    public Vector3 DetermineItemLoc(int itemNum)
+    {
+        switch (itemNum)
+        {
+            case 0:
+                return new Vector3(speechBubble.transform.position.x + 3.6f, speechBubble.transform.position.y, speechBubble.transform.position.z - 3);
+            case 1:
+                return new Vector3(speechBubble.transform.position.x - .7f, speechBubble.transform.position.y, speechBubble.transform.position.z - 3);
+            case 2:
+                return new Vector3(speechBubble.transform.position.x - 4f, speechBubble.transform.position.y, speechBubble.transform.position.z - 3);
+
+        }
+        return new Vector3(0, 0, 0); //Should never hit this
+    }
     public Vector3 DetermineBubbleLoc()
     {
         switch (shopNumber)

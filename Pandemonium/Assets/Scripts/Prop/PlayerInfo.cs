@@ -5,8 +5,8 @@ using UnityEngine;
 public class PlayerInfo : MonoBehaviour
 {
     // Start is called before the first frame update
-    public string name;
-    public int score;
+    public int playerNumber; //Green = 0, Blue = 1, Purple = 2, Yellow = 3
+    public int score; //Total score across all mini-games
     public int money;
     void Start()
     {
