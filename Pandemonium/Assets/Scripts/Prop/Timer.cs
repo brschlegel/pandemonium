@@ -9,10 +9,13 @@ public class Timer : MonoBehaviour
 {
     public float timeRemaining; //Timer's total game time
     public float beginAfter; //Starts game timer after x seconds, default is 0. This is for countdowns, game intros etc.
+
     private bool timerRunning;
+    public bool countdownOnly;
+
     public Text timerText;
     public Text startupText;
-    public GameObject gameScoreManager; //Score manager the timer is linked to
+    public GameObject manager; //Manager the timer is linked to
 
     public ScoredEvent defaultEvent;
     public List<EventTagMap> eventTagMap;
@@ -21,7 +24,10 @@ public class Timer : MonoBehaviour
     void Start()
     {
         timerRunning = false;
-        timerText.text = string.Format("{0:0}", timeRemaining); //Displays filler text if there's a countdown before timer starts
+        if (countdownOnly == false)
+        {
+            timerText.text = string.Format("{0:0}", timeRemaining); //Displays filler text if there's a countdown before timer starts
+        }
     }
 
     // Update is called once per frame
@@ -38,7 +44,7 @@ public class Timer : MonoBehaviour
                 TriggerStart(); //Lets the game score manager begin to collect points
             }
         }
-        if (timeRemaining > 0 && timerRunning == true)
+        if (timeRemaining > 0 && timerRunning == true && countdownOnly == false)
         {
             timeRemaining -= Time.deltaTime;
             if (timeRemaining < 0)
@@ -51,7 +57,7 @@ public class Timer : MonoBehaviour
         {
             if(timerRunning == true)
             {
-                TriggerEnd(); //Stops the game score manager from getting additional points
+                TriggerEnd(); //Runs code that happens once timer hits 0
             }
             timerRunning = false; //Stops the timer
         }
@@ -65,20 +71,25 @@ public class Timer : MonoBehaviour
         timerText.text = string.Format("{0:0}", timeLeft);
     }
 
-    public void TriggerEnd() //Disables players from collecting points
+    public void TriggerEnd() //Trigers code that happens after timer runs out
     {
-        if (gameScoreManager.gameObject.tag == "Score")
+        if (manager.gameObject.tag == "Score")
         {
-            eventTagMap[1].tagEvent.Invoke(gameScoreManager.gameObject); //Runs whatever's under the first tag which is "Disable Scoring"
+            eventTagMap[1].tagEvent.Invoke(manager.gameObject); //Runs whatever's under the first tag which is "Disable Scoring"
+            return;
+        }
+        else if(manager.gameObject.tag == "Rise")
+        {
+            eventTagMap[0].tagEvent.Invoke(manager.gameObject); //Runs whatever's under the first tag which is "Enable Water"
             return;
         }
     }
 
     public void TriggerStart() //Allows players to collect points
     {
-        if (gameScoreManager.gameObject.tag == "Score")
+        if (manager.gameObject.tag == "Score")
         {
-            eventTagMap[0].tagEvent.Invoke(gameScoreManager.gameObject);
+            eventTagMap[0].tagEvent.Invoke(manager.gameObject);
             return;
         }
     }

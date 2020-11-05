@@ -8,6 +8,7 @@ TagManager:
   - Ball
   - MainCollider
   - Score
+  - Rise
   layers:
   - Default
   - TransparentFX

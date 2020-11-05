@@ -21,10 +21,12 @@ public class GameScoresManager : MonoBehaviour
     public Text Purple_Score_txt;
     public Text Yellow_Score_txt;
 
-    public string currentMinigame; //There's no way to put variables in the text inspector so this keeps the script universal
     void Start()
     {
-        TempWinnerText.gameObject.SetActive(false); //Disabled in the beginning
+        if(TempWinnerText != null)
+        {
+            TempWinnerText.gameObject.SetActive(false); //Disabled in the beginning
+        }
         GameScoreSetup();
     }
 

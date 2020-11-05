@@ -6,20 +6,35 @@ public class Rise : MonoBehaviour
 {
     public float riseSpeed = .001f;
     public Stack<GameObject> podium;
+    private bool isWaterActive; //Is the rising water active?
    
     // Start is called before the first frame update
     void Start()
     {
+        isWaterActive = false;
         podium = new Stack<GameObject>();
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        transform.Translate(new Vector3(0f, 0f, riseSpeed));
+        if(isWaterActive == true)
+        {
+            transform.Translate(new Vector3(0f, 0f, riseSpeed));
+        }
         if(podium.Count > 3){
             FindPlacements();
         }
+    }
+
+    public void EnableWater()
+    {
+        isWaterActive = true;
+    }
+
+    public void DisableWater()
+    {
+        isWaterActive = false;
     }
 
     public void ElimPlayer(GameObject player){
