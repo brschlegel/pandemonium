@@ -42599,7 +42599,7 @@ Transform:
   m_GameObject: {fileID: 5220533253021265768}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 23.607855, y: 14.613316, z: -6.4110327}
-  m_LocalScale: {x: 180, y: 180, z: 180}
+  m_LocalScale: {x: 170, y: 170, z: 170}
   m_Children:
   - {fileID: 5577653299919983370}
   m_Father: {fileID: 0}
@@ -42620,12 +42620,14 @@ MonoBehaviour:
   itemName: Dash Cup
   price: 35
   moneyRequirement: 0
+  itemSlot: 2
   isUsed: 0
   selfUse: 0
   isChallenge: 1
   universal: 0
   controlSwap: 0
   doomsday: 0
+  itemType: 1
   statTypes: 
   statMod: []
   winChanges: 03000000

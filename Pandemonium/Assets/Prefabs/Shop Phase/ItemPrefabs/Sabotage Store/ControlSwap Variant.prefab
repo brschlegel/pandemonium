@@ -2683,12 +2683,14 @@ MonoBehaviour:
   itemName: Control Swap
   price: 30
   moneyRequirement: 0
+  itemSlot: 0
   isUsed: 0
   selfUse: 0
   isChallenge: 0
   universal: 0
   controlSwap: 1
   doomsday: 0
+  itemType: 3
   statTypes: 
   statMod: []
   winChanges: 

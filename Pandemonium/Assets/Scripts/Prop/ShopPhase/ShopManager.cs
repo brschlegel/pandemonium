@@ -104,10 +104,10 @@ public class ShopManager : MonoBehaviour
             {
                 seenIndices.Add(randNum);
                 subList.Add(mainList[randNum]);
+                
                 ++count;
             }
         }
-
         // Return sub list
         out_subList = subList;
     }
@@ -142,35 +142,55 @@ public class ShopManager : MonoBehaviour
                     ShopInfo si = shop.GetComponent<ShopInfo>();
                     si.shopName = "Self-Buff Store";
                     si.shopNumber = i; //This helps with speech bubble alignment since each one is different depending on the position
-                    GenerateSubList(buffShopCatalogue, out si.inventory, itemCount);
+                    GenerateSubList<GameObject>(buffShopCatalogue, out si.inventory, itemCount);
+                    for(int j = 0; j < si.inventory.Count; ++j)
+                    {
+                        si.inventory[j].GetComponent<ItemInfo>().itemSlot = j;
+                    }
                     break;
                 case ShopType.Nerf:
                     shop = Instantiate(sabotageShopPrefab, shopLocList[i], Quaternion.Euler(0f, -90f, 0f));
                     si = shop.GetComponent<ShopInfo>();
                     si.shopName = "Sabotage Store";
                     si.shopNumber = i;
-                    GenerateSubList(sabotageShopCatalogue, out si.inventory, itemCount);
+                    GenerateSubList<GameObject>(sabotageShopCatalogue, out si.inventory, itemCount);
+                    for (int j = 0; j < si.inventory.Count; ++j)
+                    {
+                        si.inventory[j].GetComponent<ItemInfo>().itemSlot = j;
+                    }
                     break;
                 case ShopType.Double:
                     shop = Instantiate(doubleShopPrefab, shopLocList[i], Quaternion.Euler(0f, -90f, 0f));
                     si = shop.GetComponent<ShopInfo>();
                     si.shopName = "Double-Edged Store";
                     si.shopNumber = i;
-                    GenerateSubList(doubleShopCatalogue, out si.inventory, itemCount);
+                    GenerateSubList<GameObject>(doubleShopCatalogue, out si.inventory, itemCount);
+                    for (int j = 0; j < si.inventory.Count; ++j)
+                    {
+                        si.inventory[j].GetComponent<ItemInfo>().itemSlot = j;
+                    }
                     break;
                 case ShopType.Challenge:
                     shop = Instantiate(challengeShopPrefab, shopLocList[i], Quaternion.Euler(0f, -90f, 0f));
                     si = shop.GetComponent<ShopInfo>();
                     si.shopName = "Challenge Store";
                     si.shopNumber = i;
-                    GenerateSubList(challengeShopCatalogue, out si.inventory, itemCount);
+                    GenerateSubList<GameObject>(challengeShopCatalogue, out si.inventory, itemCount);
+                    for (int j = 0; j < si.inventory.Count; ++j)
+                    {
+                        si.inventory[j].GetComponent<ItemInfo>().itemSlot = j;
+                    }
                     break;
                 case ShopType.Universal:
                     shop = Instantiate(universalShopPrefab, shopLocList[i], Quaternion.Euler(0f, -90f, 0f));
                     si = shop.GetComponent<ShopInfo>();
                     si.shopName = "Universal Store";
                     si.shopNumber = i;
-                    GenerateSubList(universalShopCatalogue, out si.inventory, itemCount);
+                    GenerateSubList<GameObject>(universalShopCatalogue, out si.inventory, itemCount);
+                    for (int j = 0; j < si.inventory.Count; ++j)
+                    {
+                        si.inventory[j].GetComponent<ItemInfo>().itemSlot = j;
+                    }
                     break;
             }
         }

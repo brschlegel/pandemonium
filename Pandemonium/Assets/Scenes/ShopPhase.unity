@@ -1211,15 +1211,15 @@ PrefabInstance:
     - target: {fileID: 8676021828502167232, guid: a84aacdb60342b34fac808b58643ecf0, type: 3}
       propertyPath: doubleShopCatalogue.Array.data[2]
       value: 
-      objectReference: {fileID: 6629795519272989245, guid: a586f7c0d34eadf47b01a43de259afb8, type: 3}
+      objectReference: {fileID: 5028060943013377486, guid: a586f7c0d34eadf47b01a43de259afb8, type: 3}
     - target: {fileID: 8676021828502167232, guid: a84aacdb60342b34fac808b58643ecf0, type: 3}
       propertyPath: doubleShopCatalogue.Array.data[3]
       value: 
-      objectReference: {fileID: 3676635968934168691, guid: a61ab5b4cb2ea054d8f3ce2797b6a9d6, type: 3}
+      objectReference: {fileID: 8236229932373921960, guid: a61ab5b4cb2ea054d8f3ce2797b6a9d6, type: 3}
     - target: {fileID: 8676021828502167232, guid: a84aacdb60342b34fac808b58643ecf0, type: 3}
       propertyPath: challengeShopCatalogue.Array.data[0]
       value: 
-      objectReference: {fileID: 1401934250935416796, guid: cd3c482c28920c24f8b766a01ba1054e, type: 3}
+      objectReference: {fileID: 4054060822843009015, guid: cd3c482c28920c24f8b766a01ba1054e, type: 3}
     - target: {fileID: 8676021828502167232, guid: a84aacdb60342b34fac808b58643ecf0, type: 3}
       propertyPath: challengeShopCatalogue.Array.data[1]
       value: 
@@ -1252,6 +1252,18 @@ PrefabInstance:
       propertyPath: buffShopCatalogue.Array.data[3]
       value: 
       objectReference: {fileID: 3785364809898753955, guid: 792180ce467d8b548ba6b87f426e7698, type: 3}
+    - target: {fileID: 8676021828502167232, guid: a84aacdb60342b34fac808b58643ecf0, type: 3}
+      propertyPath: doubleShopCatalogue.Array.data[0]
+      value: 
+      objectReference: {fileID: 143902514461932804, guid: 4ea78fd102b54b74f909b0fcad782c37, type: 3}
+    - target: {fileID: 8676021828502167232, guid: a84aacdb60342b34fac808b58643ecf0, type: 3}
+      propertyPath: doubleShopCatalogue.Array.data[1]
+      value: 
+      objectReference: {fileID: 8157708440053066395, guid: 94da54da891517441875a50db207e195, type: 3}
+    - target: {fileID: 8676021828502167232, guid: a84aacdb60342b34fac808b58643ecf0, type: 3}
+      propertyPath: sabotageShopCatalogue.Array.data[2]
+      value: 
+      objectReference: {fileID: 2451067994840508484, guid: 9221e31fa9e7341468648037bf6203b2, type: 3}
     - target: {fileID: 8676021828502167234, guid: a84aacdb60342b34fac808b58643ecf0, type: 3}
       propertyPath: m_Name
       value: ShopManager
