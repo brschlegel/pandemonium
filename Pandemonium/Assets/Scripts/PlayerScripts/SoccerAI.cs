@@ -10,6 +10,9 @@ public class SoccerAI : MonoBehaviour
     BasicMovement bm;
     GameObject ballParent;
     public GameObject goal;
+
+    public float goalWeight;
+    public float ballWeight;
     public Vector3 goalTransform;
     void Awake(){
         bm = transform.GetComponent<BasicMovement>();
@@ -30,10 +33,24 @@ public class SoccerAI : MonoBehaviour
     void FixedUpdate()
     {
         //Update goal position
-        goalTransform = goal.transform.TransformPoint(goal.transform.position)  /*(.1f *goal.transform.TransformDirection(goal.transform.forward))*/;
+        goalTransform = goal.transform.position + (.1f *goal.transform.right);
         bm.moving = true;
-        bm.movementDirection = transform.InverseTransformPoint((transform.TransformPoint(transform.position) - goalTransform)).normalized;
-        Debug.Log(transform.InverseTransformPoint((transform.TransformPoint(transform.position) - goalTransform)).normalized);
+        Vector3 goalVector = (goalTransform - transform.position);
+        
+        GameObject closestBall = null;
+        float minDistance = float.MaxValue;
+        foreach(Transform g in ballParent.transform){
+            if(minDistance > (g.position - transform.position).magnitude){
+                minDistance = (g.position - transform.position).magnitude;
+                closestBall = g.gameObject;
+            }
+        }
+        Vector3 toBall = Vector3.zero;
+        if(closestBall != null){
+         toBall = closestBall.transform.position - transform.position;
+        }
 
+        bm.movementDirection = (goalWeight * goalVector + (ballWeight / minDistance) * toBall).normalized;
+        Debug.Log((goalWeight * goalVector + (ballWeight / minDistance) * toBall).normalized);
     }
 }
