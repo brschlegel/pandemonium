@@ -30,8 +30,8 @@ public class BasicMovement : MonoBehaviour
     public float jumpMovementVelocityRatio = .5f;
     public float jumpForce = 500f;
     public float maxJumps = 2;
-    private bool moving = false;
-    Vector2 movementDirection;
+    public bool moving = false;
+    public Vector2 movementDirection;
     private bool grounded = true;
 
     private float jumpMaxVelocityChange;

@@ -9,8 +9,10 @@ using UnityEngine.WSA;
 public class ItemInfo : MonoBehaviour
 {
     public string itemName;
-    public uint price;
-    public uint moneyRequirement;   //Minimum money to use this item (For coin cup challenge items)
+    public int price;
+    public int moneyRequirement;   //Minimum money to use this item (For coin cup challenge items)
+    public int itemSlot; //Which slot it is in the store (For display)
+    public Vector3 itemLoc;
     public bool isUsed;
     public bool selfUse;            //Is it used on the player or someone else?
     public bool isChallenge;        //Is this item a challenge item?
@@ -19,6 +21,15 @@ public class ItemInfo : MonoBehaviour
 
     public bool controlSwap;
     public bool doomsday;
+
+    public enum ItemCategory
+    {
+        Buff,
+        Challenge,
+        Double,
+        Sabotage,
+        Universal
+    }
 
     public enum WinChange
     {
@@ -45,6 +56,8 @@ public class ItemInfo : MonoBehaviour
         Knockback,
         MoneyModifier
     }
+    public ItemCategory itemType;
+
     public List<StatType> statTypes;    //What stat types this item changes
     public List<float> statMod;         //Changes by how much
 
@@ -59,12 +72,98 @@ public class ItemInfo : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        DetermineItemLoc();
+        this.transform.position = itemLoc;
     }
 
     // Update is called once per frame
     void Update()
     {
              
+    }
+
+    public void DetermineItemLoc()
+    {
+        itemLoc = new Vector3(0, 0, 0);
+        if(itemType == ItemCategory.Buff)
+        {
+            switch(itemSlot)
+            {
+                case 0:
+
+                    break;
+
+                case 1:
+
+                    break;
+                case 2:
+
+                    break;
+            }
+        }
+        else if(itemType == ItemCategory.Challenge)
+        {
+            switch (itemSlot)
+            {
+                case 0:
+
+                    break;
+
+                case 1:
+
+                    break;
+                case 2:
+
+                    break;
+            }
+        }
+        else if(itemType == ItemCategory.Double)
+        {
+            switch (itemSlot)
+            {
+                case 0:
+
+                    break;
+
+                case 1:
+
+                    break;
+                case 2:
+
+                    break;
+            }
+        }
+        else if (itemType == ItemCategory.Sabotage)
+        {
+            switch (itemSlot)
+            {
+                case 0:
+                    itemLoc = new Vector3(-33.3f, 0f, 0f);
+                    break;
+
+                case 1:
+                    itemLoc = new Vector3(-26f, 0f, 0f);
+                    break;
+                case 2:
+                    itemLoc = new Vector3(-17.9f, 0f, 0f);
+                    break;
+            }
+        }
+        else if (itemType == ItemCategory.Universal)
+        {
+            switch (itemSlot)
+            {
+                case 0:
+
+                    break;
+
+                case 1:
+
+                    break;
+                case 2:
+
+                    break;
+            }
+        }
     }
 }
