@@ -1264,6 +1264,10 @@ PrefabInstance:
       propertyPath: sabotageShopCatalogue.Array.data[2]
       value: 
       objectReference: {fileID: 2451067994840508484, guid: 9221e31fa9e7341468648037bf6203b2, type: 3}
+    - target: {fileID: 8676021828502167232, guid: a84aacdb60342b34fac808b58643ecf0, type: 3}
+      propertyPath: portal
+      value: 
+      objectReference: {fileID: 5395927083804025484, guid: 57a5dbebe405e7548b905ece65f4e6df, type: 3}
     - target: {fileID: 8676021828502167234, guid: a84aacdb60342b34fac808b58643ecf0, type: 3}
       propertyPath: m_Name
       value: ShopManager
