@@ -23,12 +23,14 @@ public class ShopManager : MonoBehaviour
     public GameObject doubleShopPrefab;
     public GameObject challengeShopPrefab;
     public GameObject universalShopPrefab;
+    public GameObject portal;
 
     public GameObject standardShopkeeper;
     public GameObject easterEggShopkeeper;
 
     public int shopCount;
     public int itemCount;
+    public int jumpCount = 0;
 
     // Master lists of possible items
     public List<GameObject> buffShopCatalogue;
@@ -60,6 +62,14 @@ public class ShopManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            jumpCount += 1;
+        }
+        if(jumpCount >= 5)
+        {
+            Instantiate(portal, new Vector3(0, 3, -7), Quaternion.identity);
+        }
     }
 
     public void DetermineLocs()

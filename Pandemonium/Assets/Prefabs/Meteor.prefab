@@ -81,6 +81,10 @@ MonoBehaviour:
   rotateY: 1
   rotateZ: 1
   rotate: 1
+  stayCount: 0
+  destructionCount: 300
+  YCount: 0
+  PreviousYCount: 0
 --- !u!1 &6835043455006319234
 GameObject:
   m_ObjectHideFlags: 0
