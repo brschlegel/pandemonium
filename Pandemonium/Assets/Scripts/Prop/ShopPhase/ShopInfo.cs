@@ -15,6 +15,7 @@ public class ShopInfo : MonoBehaviour
     private int maxRange; //Max range for the shops to serve the player
     public int shopNumber;
     public GameObject speechBubble;
+    public bool allowBuying;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,6 +36,7 @@ public class ShopInfo : MonoBehaviour
         for(int i = 0; i < inventory.Count; ++i)
         {
             inventory[i] = Instantiate(inventory[i], new Vector3(0,0,0), inventory[i].transform.rotation);
+            inventory[i].GetComponent<ItemInfo>().shopNum = shopNumber;
         }
     }
 
@@ -61,7 +63,11 @@ public class ShopInfo : MonoBehaviour
         {
             if (Vector3.Distance(transform.position, PlayerList[i].transform.position) < maxRange) //If the distance between the shop and player is less than the max range...
             {
-
+                allowBuying = true;
+            }
+            else
+            {
+                allowBuying = false;
             }
         }
     }
