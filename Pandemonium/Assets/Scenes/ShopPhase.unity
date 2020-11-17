@@ -1173,6 +1173,18 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 8676021828502167232, guid: a84aacdb60342b34fac808b58643ecf0, type: 3}
+      propertyPath: sabotageShopCatalogue.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8676021828502167232, guid: a84aacdb60342b34fac808b58643ecf0, type: 3}
+      propertyPath: challengeShopCatalogue.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8676021828502167232, guid: a84aacdb60342b34fac808b58643ecf0, type: 3}
+      propertyPath: buffShopCatalogue.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8676021828502167232, guid: a84aacdb60342b34fac808b58643ecf0, type: 3}
       propertyPath: buffShopPrefab
       value: 
       objectReference: {fileID: 5975266756920806112, guid: 3f18e6cba7ee8a34db48811e689319dc, type: 3}
@@ -1215,15 +1227,15 @@ PrefabInstance:
     - target: {fileID: 8676021828502167232, guid: a84aacdb60342b34fac808b58643ecf0, type: 3}
       propertyPath: doubleShopCatalogue.Array.data[3]
       value: 
-      objectReference: {fileID: 8236229932373921960, guid: a61ab5b4cb2ea054d8f3ce2797b6a9d6, type: 3}
+      objectReference: {fileID: 2177070071082903051, guid: a61ab5b4cb2ea054d8f3ce2797b6a9d6, type: 3}
     - target: {fileID: 8676021828502167232, guid: a84aacdb60342b34fac808b58643ecf0, type: 3}
       propertyPath: challengeShopCatalogue.Array.data[0]
       value: 
-      objectReference: {fileID: 4054060822843009015, guid: cd3c482c28920c24f8b766a01ba1054e, type: 3}
+      objectReference: {fileID: 8220942909364245908, guid: 37bed74d9472c5e4990eee61285346a5, type: 3}
     - target: {fileID: 8676021828502167232, guid: a84aacdb60342b34fac808b58643ecf0, type: 3}
       propertyPath: challengeShopCatalogue.Array.data[1]
       value: 
-      objectReference: {fileID: 1587361404065922445, guid: 8f8aa58f15e0b0f49916116a148f6e15, type: 3}
+      objectReference: {fileID: 2514782285367382276, guid: 5d76b179b8cb16249afc1539836f36c6, type: 3}
     - target: {fileID: 8676021828502167232, guid: a84aacdb60342b34fac808b58643ecf0, type: 3}
       propertyPath: challengeShopCatalogue.Array.data[2]
       value: 
@@ -1263,7 +1275,7 @@ PrefabInstance:
     - target: {fileID: 8676021828502167232, guid: a84aacdb60342b34fac808b58643ecf0, type: 3}
       propertyPath: sabotageShopCatalogue.Array.data[2]
       value: 
-      objectReference: {fileID: 2451067994840508484, guid: 9221e31fa9e7341468648037bf6203b2, type: 3}
+      objectReference: {fileID: 8503927089505861835, guid: efd1eaf416a9dad4b9bf3ea6d80ccc45, type: 3}
     - target: {fileID: 8676021828502167232, guid: a84aacdb60342b34fac808b58643ecf0, type: 3}
       propertyPath: portal
       value: 
