@@ -10059,16 +10059,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b911dad7fda6f6a45901e8bafd3f82b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvas: {fileID: 0}
+  BuyButtonList: 
   itemName: Speed Cup
-  price: 0
+  price: 35
   moneyRequirement: 0
-  itemSlot: 1
+  itemSlot: 2
   shopNum: 0
   itemLoc: {x: 0, y: 0, z: 0}
   isUsed: 0
   selfUse: 0
   isChallenge: 1
   universal: 0
+  isSpeedCup: 1
+  isMiniMe: 0
   controlSwap: 0
   doomsday: 0
   itemType: 1
