@@ -68,6 +68,7 @@ public class BasicMovement : MonoBehaviour
             if(rotator != null){
             rotator.Forward = new Vector3(movementDirection.x,0,movementDirection.y);
             }
+            
 
         }
         else if (ctx.canceled)

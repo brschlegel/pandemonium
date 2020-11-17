@@ -11,8 +11,8 @@ public class SoccerAI : MonoBehaviour
     GameObject ballParent;
     public GameObject goal;
 
-    public float goalWeight;
-    public float ballWeight;
+    public float goalWeight = 1;
+    public float ballWeight = 1;
     public Vector3 goalTransform;
     void Awake(){
         bm = transform.GetComponent<BasicMovement>();

@@ -249,6 +249,8 @@ MonoBehaviour:
   jumpMovementVelocityRatio: 0.5
   jumpForce: 10
   maxJumps: 2
+  moving: 0
+  movementDirection: {x: 0, y: -1}
 --- !u!114 &2939344842415534272
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -409,3 +411,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   goal: {fileID: 0}
+  goalWeight: 1
+  ballWeight: 1
+  goalTransform: {x: 0, y: 0, z: 0}
