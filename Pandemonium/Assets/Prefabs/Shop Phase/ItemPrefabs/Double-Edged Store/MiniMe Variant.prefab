@@ -209,14 +209,14 @@ MonoBehaviour:
   itemName: Mini-me
   price: 30
   moneyRequirement: 0
-  itemSlot: 0
+  itemSlot: 2
   shopNum: 0
   itemLoc: {x: 0, y: 0, z: 0}
   isUsed: 0
   selfUse: 1
   isChallenge: 0
   universal: 0
-  isSizeCup: 0
+  isSpeedCup: 0
   isMiniMe: 1
   controlSwap: 0
   doomsday: 0
