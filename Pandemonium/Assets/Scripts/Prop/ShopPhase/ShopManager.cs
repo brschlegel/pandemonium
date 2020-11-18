@@ -62,14 +62,14 @@ public class ShopManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            jumpCount += 1;
-        }
-        if(jumpCount >= 5)
-        {
-            Instantiate(portal, new Vector3(0, 3, -7), Quaternion.identity);
-        }
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //{
+        //    jumpCount += 1;
+        //}
+        //if(jumpCount >= 5)
+        //{
+        //    Instantiate(portal, new Vector3(0, 3, -7), Quaternion.identity);
+        //}
     }
 
     public void DetermineLocs()

@@ -16,11 +16,15 @@ public class ItemInfo : MonoBehaviour
     public int moneyRequirement;   //Minimum money to use this item (For coin cup challenge items)
     public int itemSlot; //Which slot it is in the store (For display)
     public int shopNum; //Which store it's in
+    float speedCupOffset = 0;
+    float miniMeOffset = 0;
     public Vector3 itemLoc;
     public bool isUsed;
     public bool selfUse;            //Is it used on the player or someone else?
     public bool isChallenge;        //Is this item a challenge item?
     public bool universal;          //Is this item used on everyone?
+    public bool isSpeedCup;
+    public bool isMiniMe;
 
 
     public bool controlSwap;
@@ -142,19 +146,23 @@ public class ItemInfo : MonoBehaviour
         }
         else if(itemType == ItemCategory.Challenge)
         {
+            if (isSpeedCup == true)
+            {
+                speedCupOffset = -3f;
+            }
             switch (itemSlot)
             {
                 case 0:
                     switch (shopNum)
                     {
                         case 0:
-                            itemLoc = new Vector3(-33f, 18f, 3f);
+                            itemLoc = new Vector3(-33f, 18f, 6f + speedCupOffset);
                             break;
                         case 1:
-                            itemLoc = new Vector3(-7f, 18f, 3f);
+                            itemLoc = new Vector3(-7f, 18f, 6f + speedCupOffset);
                             break;
                         case 2:
-                            itemLoc = new Vector3(20f, 18f, 3f);
+                            itemLoc = new Vector3(20f, 18f, 6f + speedCupOffset);
                             break;
                     }
                     break;
@@ -163,13 +171,13 @@ public class ItemInfo : MonoBehaviour
                     switch (shopNum)
                     {
                         case 0:
-                            itemLoc = new Vector3(-27f, 18f, 3f);
+                            itemLoc = new Vector3(-27f, 18f, 6f + speedCupOffset);
                             break;
                         case 1:
-                            itemLoc = new Vector3(-1f, 18f, 3f);
+                            itemLoc = new Vector3(-1f, 18f, 6f + speedCupOffset);
                             break;
                         case 2:
-                            itemLoc = new Vector3(26f, 18f, 3f);
+                            itemLoc = new Vector3(26f, 18f, 6f + speedCupOffset);
                             break;
                     }
                     break;
@@ -177,13 +185,13 @@ public class ItemInfo : MonoBehaviour
                     switch (shopNum)
                     {
                         case 0:
-                            itemLoc = new Vector3(-21f, 18f, 3f);
+                            itemLoc = new Vector3(-21f, 18f, 6f + speedCupOffset);
                             break;
                         case 1:
-                            itemLoc = new Vector3(5f, 18f, 3f);
+                            itemLoc = new Vector3(5f, 18f, 6f + speedCupOffset);
                             break;
                         case 2:
-                            itemLoc = new Vector3(32f, 18f, 3f);
+                            itemLoc = new Vector3(32f, 18f, 6f + speedCupOffset);
                             break;
                     }
                     break;
@@ -191,19 +199,23 @@ public class ItemInfo : MonoBehaviour
         }
         else if(itemType == ItemCategory.Double)
         {
+            if (isMiniMe == true)
+            {
+                miniMeOffset = 1.3f;
+            }
             switch (itemSlot)
             {
                 case 0:
                     switch (shopNum)
                     {
                         case 0:
-                            itemLoc = new Vector3(-33f, 18.7f, 3f);
+                            itemLoc = new Vector3(-33f, 18.7f + miniMeOffset, 3f);
                             break;
                         case 1:
-                            itemLoc = new Vector3(-7f, 18.7f, 3f);
+                            itemLoc = new Vector3(-7f, 18.7f + miniMeOffset, 3f);
                             break;
                         case 2:
-                            itemLoc = new Vector3(20f, 18.7f, 3f);
+                            itemLoc = new Vector3(20f, 18.7f + miniMeOffset, 3f);
                             break;
                     }
                     break;
@@ -212,13 +224,13 @@ public class ItemInfo : MonoBehaviour
                     switch (shopNum)
                     {
                         case 0:
-                            itemLoc = new Vector3(-27f, 18.7f, 3f);
+                            itemLoc = new Vector3(-27f, 18.7f + miniMeOffset, 3f);
                             break;
                         case 1:
-                            itemLoc = new Vector3(-1f, 18.7f, 3f);
+                            itemLoc = new Vector3(-1f, 18.7f + miniMeOffset, 3f);
                             break;
                         case 2:
-                            itemLoc = new Vector3(26f, 18.7f, 3f);
+                            itemLoc = new Vector3(26f, 18.7f + miniMeOffset, 3f);
                             break;
                     }
                     break;
@@ -226,13 +238,13 @@ public class ItemInfo : MonoBehaviour
                     switch (shopNum)
                     {
                         case 0:
-                            itemLoc = new Vector3(-21f, 18.7f, 3f);
+                            itemLoc = new Vector3(-21f, 18.7f + miniMeOffset, 3f);
                             break;
                         case 1:
-                            itemLoc = new Vector3(6f, 18.7f, 3f);
+                            itemLoc = new Vector3(6f, 18.7f + miniMeOffset, 3f);
                             break;
                         case 2:
-                            itemLoc = new Vector3(32f, 18.7f, 3f);
+                            itemLoc = new Vector3(32f, 18.7f + miniMeOffset, 3f);
                             break;
                     }
                     break;
@@ -341,19 +353,45 @@ public class ItemInfo : MonoBehaviour
     public void DisplayPrice()
     {
         float xOffset = 0; //Offset for prices depending on which shop they're located at
+        float yOffset = 0;
+        float addXOffset = 0;
+        float addYOffset = 0;
+        float addZOffset = 0;
         if(shopNum == 0)
         {
             xOffset = 2.6f;
+            if (isSpeedCup == true)
+            {
+                addZOffset = speedCupOffset;
+                addXOffset = 1.3f;
+            }
+        }
+        else if(shopNum == 1)
+        {
+            xOffset = .7f;
+            if (isSpeedCup == true)
+            {
+                addZOffset = speedCupOffset;
+            }
         }
         else if(shopNum == 2)
         {
             xOffset = -1.3f;
+            if (isSpeedCup == true)
+            {
+                addZOffset = speedCupOffset;
+                addXOffset = -1.3f;
+            }
         }
-        Instantiate(CreateText("Arial.ttf", 14, new Vector2(50, 20), xOffset));
+        if(isMiniMe == true)
+        {
+            addYOffset = -miniMeOffset;
+        }
+        Instantiate(CreateText("Arial.ttf", 14, new Vector2(50, 20), xOffset, yOffset, addXOffset, addYOffset, addZOffset));
 
 
     }
-    public Text CreateText(string fontName, int fontSize, Vector2 textBoxSize, float xOffset)
+    public Text CreateText(string fontName, int fontSize, Vector2 textBoxSize, float xOffset, float yOffset, float addXOffset, float addYOffset, float addZOffset)
     {
         GameObject parentText = new GameObject("PriceText");
         parentText.layer = LayerMask.NameToLayer("UI");
@@ -364,7 +402,7 @@ public class ItemInfo : MonoBehaviour
         tempText.color = Color.black;
         tempText.font = Resources.GetBuiltinResource(typeof(Font), fontName) as Font; //This lets us easily change the font to whatever we want. Ex. FontName.ttf
         tempText.rectTransform.sizeDelta = textBoxSize; //Size of the box surrounding the text. This affects placement
-        tempText.transform.position = Camera.main.WorldToScreenPoint(new Vector3(transform.position.x+xOffset, transform.position.y-1.2f, 0)); //Location of the text with offset. Should keep it the same despite different devices
+        tempText.transform.position = Camera.main.WorldToScreenPoint(new Vector3(transform.position.x+xOffset+addXOffset, transform.position.y-1.2f+yOffset+addYOffset, 0+addZOffset)); //Location of the text with offset. Should keep it the same despite different devices
 
         tempText.fontSize = fontSize; //Font size
         return tempText;

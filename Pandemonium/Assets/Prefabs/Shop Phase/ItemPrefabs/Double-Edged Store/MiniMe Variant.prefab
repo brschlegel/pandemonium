@@ -204,14 +204,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b911dad7fda6f6a45901e8bafd3f82b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvas: {fileID: 0}
+  BuyButtonList: 
   itemName: Mini-me
   price: 30
   moneyRequirement: 0
-  itemSlot: 0
+  itemSlot: 2
+  shopNum: 0
+  itemLoc: {x: 0, y: 0, z: 0}
   isUsed: 0
   selfUse: 1
   isChallenge: 0
   universal: 0
+  isSpeedCup: 0
+  isMiniMe: 1
   controlSwap: 0
   doomsday: 0
   itemType: 2

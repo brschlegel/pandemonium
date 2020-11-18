@@ -76,12 +76,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosion: {fileID: 9100951555789632002, guid: 8ddd4180ede597e4f92ee0967ad6eac3, type: 3}
-  destructionHeight: -4
+  destructionHeight: -35
   rotateX: 1
   rotateY: 1
   rotateZ: 1
   rotate: 1
   stayCount: 0
+  bounce: 0
   destructionCount: 300
   YCount: 0
   PreviousYCount: 0
