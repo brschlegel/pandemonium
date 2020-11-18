@@ -8,6 +8,12 @@ public class PlayerInfo : MonoBehaviour
     public int playerNumber; //Green = 0, Blue = 1, Purple = 2, Yellow = 3
     public int score; //Total score across all mini-games
     public int money;
+    public float speed;
+    public float size;
+    public float dashDistance;
+    public float dashPower;
+    public float knockback;
+    public float moneyModifier;
 
     public string color;
     void Start()
