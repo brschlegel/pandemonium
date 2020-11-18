@@ -64,10 +64,7 @@ public class BasicMovement : MonoBehaviour
         if (ctx.performed)
         {
             movementDirection = ctx.ReadValue<Vector2>();
-            moving = true;
-            if(rotator != null){
-            rotator.Forward = new Vector3(movementDirection.x,0,movementDirection.y);
-            }
+            Moving();
             
 
         }
@@ -76,6 +73,13 @@ public class BasicMovement : MonoBehaviour
             moving = false;
         }
     }
+
+    public void Moving(){
+        moving = true;
+            if(rotator != null){
+            rotator.Forward = new Vector3(movementDirection.x,0,movementDirection.y);
+            }
+    }
     public void OnMovementEnd(InputAction.CallbackContext ctx)
     {
         moving = false;
@@ -83,8 +87,15 @@ public class BasicMovement : MonoBehaviour
 
     public void OnJump(InputAction.CallbackContext ctx)
     {
+        if(ctx.performed){
+            Jump();
 
-        if (jumps < maxJumps - 1 && ctx.performed)
+        }
+       
+    }
+
+    public void Jump(){
+     if (jumps < maxJumps - 1 )
         {
             movementDirection = Vector2.zero;
             moving = false;
@@ -95,7 +106,13 @@ public class BasicMovement : MonoBehaviour
 
     public void OnDash(InputAction.CallbackContext ctx)
     {
-        if (canDash)
+        if(ctx.performed){
+            Dash();
+        }
+    }
+
+    public void Dash(){
+           if (canDash)
         {
             canDash = false;
             dashVelocity = dashSpeed * ((new Vector3(movementDirection.x, 0, movementDirection.y)).normalized);
