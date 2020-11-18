@@ -12,6 +12,7 @@ public class Timer : MonoBehaviour
 
     private bool timerRunning;
     public bool countdownOnly;
+    public bool instruction;
 
     public Text timerText;
     public Text startupText;
@@ -24,6 +25,7 @@ public class Timer : MonoBehaviour
     void Start()
     {
         timerRunning = false;
+        instruction = true;
         if (countdownOnly == false)
         {
             timerText.text = string.Format("{0:0}", timeRemaining); //Displays filler text if there's a countdown before timer starts
@@ -33,7 +35,7 @@ public class Timer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (beginAfter >= 0) //Checks to see if there's a countdown before timer starts
+        if (beginAfter >= 0 && instruction == false) //Checks to see if there's a countdown before timer starts
         {
             DisplayStartupText(); //Displays the startup text with the countdown
             beginAfter -= Time.deltaTime;
@@ -44,7 +46,7 @@ public class Timer : MonoBehaviour
                 TriggerStart(); //Lets the game score manager begin to collect points
             }
         }
-        if (timeRemaining > 0 && timerRunning == true && countdownOnly == false)
+        if (timeRemaining > 0 && timerRunning == true && countdownOnly == false && instruction ==false)
         {
             timeRemaining -= Time.deltaTime;
             if (timeRemaining < 0)
@@ -99,6 +101,12 @@ public class Timer : MonoBehaviour
         startupText.gameObject.SetActive(true);
         float timeLeft = Mathf.FloorToInt(beginAfter);
         startupText.text = string.Format("Game begins in: {0:0}", timeLeft);
+    }
+
+    public void StartBtnClick()
+    {
+        instruction = false;
+        Debug.Log("button clicked");
     }
 }
 
