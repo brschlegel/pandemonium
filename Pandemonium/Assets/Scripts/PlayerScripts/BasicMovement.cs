@@ -82,8 +82,6 @@ public class BasicMovement : MonoBehaviour
         if (ctx.performed)
         {
             movementDirection = ctx.ReadValue<Vector2>();
-            Moving();
-            
             moving = true;
             movementSound.Play();
             if (rotator != null){
@@ -97,13 +95,6 @@ public class BasicMovement : MonoBehaviour
             moving = false;
             movementSound.Stop();
         }
-    }
-
-    public void Moving(){
-        moving = true;
-            if(rotator != null){
-            rotator.Forward = new Vector3(movementDirection.x,0,movementDirection.y);
-            }
     }
     public void OnMovementEnd(InputAction.CallbackContext ctx)
     {
