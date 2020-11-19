@@ -8,8 +8,7 @@ public class SoccerAI : MonoBehaviour
     // find ball coming towards goal
     // block it
     BasicMovement bm;
-    GameObject ballParent;
-    public GameObject goal;
+    public float dashChance;
     float prevTheta;
 
     public GameObject closestBall;
@@ -17,12 +16,13 @@ public class SoccerAI : MonoBehaviour
     public float centerWeight = 1;
     public float sigma;
     public Vector3 goalTransform;
+    int i =0;
+       float theta;
     void Awake(){
         bm = transform.GetComponent<BasicMovement>();
-        ballParent = GameObject.Find("SoccerBallParent");
-        goal = GameObject.FindGameObjectWithTag(transform.GetComponent<PlayerInfo>().color);
-        centerWeight = .15f;
-        sigma = .25f;
+        centerWeight = .1f;
+        sigma = .15f;
+        dashChance = .006f;
     }
     void Start()
     {
@@ -48,17 +48,23 @@ public class SoccerAI : MonoBehaviour
 
     void FixedUpdate()
     {
+     
         //Update goal position
-      
+        if(Random.value < dashChance){
+            bm.Dash();
+            Debug.Log("AI Dash");
+        }
         bm.Moving();
       //  bm.movementDirection = (goalWeight * goalVector + (ballWeight / minDistance) * toBall).normalized;
        // Debug.Log((goalWeight * goalVector + (ballWeight / minDistance) * toBall).normalized);
-       float theta = GenerateNormalNoise(sigma,prevTheta);
+       if(i % 5 == 0){
+        theta = GenerateNormalNoise(sigma,prevTheta);
+       }
        Vector2 rNV = new Vector2(Mathf.Cos(theta), Mathf.Sin(theta));
        Vector2 centerBias = centerWeight * (new Vector2(transform.position.x,transform.position.z));
        
         prevTheta = theta;
-        Debug.Log((rNV - centerBias).normalized);
+       
         bm.movementDirection = (rNV - centerBias).normalized;
 
         

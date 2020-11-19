@@ -107,6 +107,7 @@ public class BasicMovement : MonoBehaviour
     public void OnDash(InputAction.CallbackContext ctx)
     {
         if(ctx.performed){
+            
             Dash();
         }
     }
@@ -114,10 +115,13 @@ public class BasicMovement : MonoBehaviour
     public void Dash(){
            if (canDash)
         {
+           
+
             canDash = false;
             dashVelocity = dashSpeed * ((new Vector3(movementDirection.x, 0, movementDirection.y)).normalized);
-            StartCoroutine("Cooldown", dashCooldown);
-            StartCoroutine("Dash", .25f);
+            StartCoroutine(Cooldown(dashCooldown));
+      
+            StartCoroutine(Dash(.15f));
 
         }
     }
@@ -134,6 +138,7 @@ public class BasicMovement : MonoBehaviour
     {
         Vector3 prevVelocity = rb.velocity;
         rb.velocity = dashVelocity;
+       
         yield return new WaitForSeconds(time);
         rb.velocity = prevVelocity;
     }
