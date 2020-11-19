@@ -29,7 +29,7 @@ public class Timer : MonoBehaviour
     void Start()
     {
         timerRunning = false;
-        instruction = true;
+        //instruction = true;
         if (countdownOnly == false)
         {
             timerText.text = string.Format("{0:0}", timeRemaining); //Displays filler text if there's a countdown before timer starts

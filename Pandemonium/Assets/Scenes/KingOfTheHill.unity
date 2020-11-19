@@ -4618,6 +4618,7 @@ MonoBehaviour:
   timeRemaining: 0
   beginAfter: 5
   countdownOnly: 1
+  instruction: 0
   timerText: {fileID: 0}
   startupText: {fileID: 394314643}
   manager: {fileID: 468491119}
@@ -4641,6 +4642,9 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+  StartOnClick: {fileID: 0}
+  bgm: {fileID: 0}
+  win: {fileID: 0}
 --- !u!4 &1953063443
 Transform:
   m_ObjectHideFlags: 0
