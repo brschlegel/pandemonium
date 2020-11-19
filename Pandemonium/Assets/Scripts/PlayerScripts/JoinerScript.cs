@@ -10,7 +10,6 @@ public class JoinerScript : MonoBehaviour
     public GameObject playerPrefab;
     public InputActionAsset actionMap;
 
-    private string[] colors;
     public List<Material[]> materialPerPlayer;
     public Material[] Player1;
     public Material[] Player2;
@@ -29,7 +28,6 @@ public class JoinerScript : MonoBehaviour
         materialPerPlayer.Add(Player3);
         materialPerPlayer.Add(Player4);
         count = 0;
-        colors = new string[4] {"Green", "Blue", "Purple", "Yellow"};
     }
 
     public void OnPlayerJoined(PlayerInput playerInput){
@@ -51,7 +49,6 @@ public class JoinerScript : MonoBehaviour
         MeshRenderer mr = g.transform.GetChild(1).GetComponent<MeshRenderer>();
       
         mr.materials = materialPerPlayer[count];
-        g.GetComponent<PlayerInfo>().color = colors[count];
      
     }
 }

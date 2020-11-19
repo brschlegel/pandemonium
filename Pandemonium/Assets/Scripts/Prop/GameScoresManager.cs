@@ -7,6 +7,8 @@ using UnityEngine.UI;
 
 public class GameScoresManager : MonoBehaviour
 {
+    public AudioSource winSound;
+
     //This is for the current mini-game's score. Not overall
     private List<GameObject> Players; //I'd like to make it so I can just reference this somewhere someday without making a new list of players each time
     private List<int> PlayerGameScores;
@@ -20,11 +22,11 @@ public class GameScoresManager : MonoBehaviour
     public Text Blue_Score_txt;
     public Text Purple_Score_txt;
     public Text Yellow_Score_txt;
-    
 
     void Start()
     {
-        if(TempWinnerText != null)
+       
+        if (TempWinnerText != null)
         {
             TempWinnerText.gameObject.SetActive(false); //Disabled in the beginning
         }
@@ -139,9 +141,11 @@ public class GameScoresManager : MonoBehaviour
 
     public void DisplayWinner(List<string> colorsWithHighestScore, int highestScore)
     {
+        winSound = GetComponent<AudioSource>();
         TempWinnerText.gameObject.SetActive(true);
         if(colorsWithHighestScore.Count > 1) //There's a tie
         {
+            
             TempWinnerText.text = "Winners are ";
             Debug.Log(colorsWithHighestScore.Count + " is count");
             for(int i = 0; i < colorsWithHighestScore.Count; i++)
@@ -159,8 +163,8 @@ public class GameScoresManager : MonoBehaviour
         }
         else //No tie only 1 winner
         {
+            winSound.Play();
             TempWinnerText.text = colorsWithHighestScore[0] + " wins with a score of " + highestScore + "!";
         }
-        
     }
 }

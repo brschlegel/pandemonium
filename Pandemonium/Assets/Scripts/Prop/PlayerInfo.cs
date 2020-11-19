@@ -8,8 +8,6 @@ public class PlayerInfo : MonoBehaviour
     public int playerNumber; //Green = 0, Blue = 1, Purple = 2, Yellow = 3
     public int score; //Total score across all mini-games
     public int money;
-
-    public string color;
     void Start()
     {
         name = gameObject.name;

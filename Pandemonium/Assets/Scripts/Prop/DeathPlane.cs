@@ -7,10 +7,12 @@ public class DeathPlane : MonoBehaviour
 {
 
     TagList tagList;
+    public AudioSource deathSound;
 
     void Start()
     {
         tagList = GetComponent<TagList>();
+        deathSound = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -33,6 +35,15 @@ public class DeathPlane : MonoBehaviour
                 other.gameObject.SetActive(false);
             }
         }
+        }
+
+    }
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "MainCollider")
+        {
+            Debug.Log("death");
+            deathSound.Play();
         }
 
     }
