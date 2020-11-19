@@ -939,7 +939,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04b11c3ddf9d9b141991c70e6f44b95b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  riseSpeed: 0.005
+  riseSpeed: 0.01
 --- !u!114 &468491124
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4618,6 +4618,7 @@ MonoBehaviour:
   timeRemaining: 0
   beginAfter: 5
   countdownOnly: 1
+  instruction: 0
   timerText: {fileID: 0}
   startupText: {fileID: 394314643}
   manager: {fileID: 468491119}
