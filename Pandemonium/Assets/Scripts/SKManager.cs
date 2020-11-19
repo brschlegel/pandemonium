@@ -7,13 +7,14 @@ public class SKManager : MonoBehaviour
     public GameObject meteor;
     public GameObject platform;
     public GameObject crab;
+    public int crabMaxCount; //Max crabs you want spawned in the game
     //public float X;
     //public float Z;
     private int count = 0;
     // Start is called before the first frame update
     void Start()
     {
-        
+        SpawnCrabs();
     }
 
     // Update is called once per frame
@@ -26,7 +27,11 @@ public class SKManager : MonoBehaviour
         {
             Instantiate(meteor, new Vector3(Random.Range(-30, 68 + 1), 50, Random.Range(-22, 63 + 1)), Quaternion.identity);
         }
-        if(count % 100 == 0 && count % 75 == 0)
+    }
+
+    public void SpawnCrabs()
+    {
+        for (int i = 0; i < crabMaxCount; ++i)
         {
             Instantiate(crab, new Vector3(Random.Range(-30, 68 + 1), 0, Random.Range(-22, 63 + 1)), Quaternion.identity);
         }

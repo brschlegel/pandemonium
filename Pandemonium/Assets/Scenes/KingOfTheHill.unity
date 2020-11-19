@@ -894,7 +894,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: TIMER
+  m_Text: 'Timer: '
 --- !u!222 &394314644
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4642,6 +4642,9 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+  StartOnClick: {fileID: 0}
+  bgm: {fileID: 0}
+  win: {fileID: 0}
 --- !u!4 &1953063443
 Transform:
   m_ObjectHideFlags: 0
@@ -4924,6 +4927,7 @@ MonoBehaviour:
   meteor: {fileID: 6835043454994625578, guid: 625cd6fc30745654c9b2de4e68ca49ea, type: 3}
   platform: {fileID: 391825845}
   crab: {fileID: 5910419455738489749, guid: 5e5ee47809d93b44ba549f1ad008bd14, type: 3}
+  crabMaxCount: 0
 --- !u!1 &2058529872
 GameObject:
   m_ObjectHideFlags: 0

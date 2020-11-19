@@ -8170,6 +8170,10 @@ PrefabInstance:
       propertyPath: win
       value: 
       objectReference: {fileID: 1064468673}
+    - target: {fileID: 1709382922943246474, guid: 3f63fe62d143fc74c83247b120225760, type: 3}
+      propertyPath: instruction
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1709382922943246479, guid: 3f63fe62d143fc74c83247b120225760, type: 3}
       propertyPath: m_Name
       value: Game Timer
