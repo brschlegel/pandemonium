@@ -411,6 +411,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   goal: {fileID: 0}
-  goalWeight: 0
-  ballWeight: 0
+  closestBall: {fileID: 0}
+  centerWeight: 1
+  sigma: 0
   goalTransform: {x: 0, y: 0, z: 0}
