@@ -13,6 +13,7 @@ TagManager:
   - Blue
   - Green
   - Purple
+  - Arena
   layers:
   - Default
   - TransparentFX

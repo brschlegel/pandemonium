@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class GameScoresManager : MonoBehaviour
 {
+    public AudioSource winSound;
     //This is for the current mini-game's score. Not overall
     private List<GameObject> Players; //I'd like to make it so I can just reference this somewhere someday without making a new list of players each time
     private List<int> PlayerGameScores;
@@ -159,6 +160,7 @@ public class GameScoresManager : MonoBehaviour
         }
         else //No tie only 1 winner
         {
+            winSound.Play();
             TempWinnerText.text = colorsWithHighestScore[0] + " wins with a score of " + highestScore + "!";
         }
         
