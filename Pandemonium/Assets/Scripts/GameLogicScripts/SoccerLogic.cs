@@ -5,12 +5,10 @@ using UnityEngine;
 public class SoccerLogic : MonoBehaviour
 {
     public GameObject environment;
-    public AudioSource deathSound;
     public float degreeStep;
     public float numRotate;
     void Start()
     {
-        deathSound = GetComponent<AudioSource>();
         degreeStep = 1;
         InvokeRepeating("StartRotate", 0, 10);
         InvokeRepeating("StopRotate", 5, 10);
@@ -40,6 +38,5 @@ public class SoccerLogic : MonoBehaviour
 
     public void SavePlayer(GameObject player){
         player.transform.position = new Vector3(0,1,0);
-        deathSound.Play();
     }
 }

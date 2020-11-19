@@ -21,8 +21,6 @@ public class EventTagMap
 
 public class Goal : MonoBehaviour
 {
-    public AudioSource goalSound;
-
     public List<EventTagMap> eventTagMap;
     public ScoredEvent defaultEvent;
     void Start()
@@ -31,14 +29,12 @@ public class Goal : MonoBehaviour
     }
     void OnTriggerEnter(Collider other)
     {
-        goalSound = GetComponent<AudioSource>();
         if (other.gameObject.tag == "MainCollider")
         {
             for (int i = 0; i < eventTagMap.Count; i++)
             {
                 if (other.GetComponent<TagList>().HasTag(eventTagMap[i].tag))
                 {
-                    goalSound.Play();
                     eventTagMap[i].tagEvent.Invoke(other.gameObject);
                     return;
                 }

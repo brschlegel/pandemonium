@@ -9,7 +9,10 @@ TagManager:
   - MainCollider
   - Score
   - Rise
-  - Arena
+  - Yellow
+  - Blue
+  - Green
+  - Purple
   layers:
   - Default
   - TransparentFX

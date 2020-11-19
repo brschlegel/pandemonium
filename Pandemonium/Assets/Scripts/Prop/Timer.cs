@@ -12,6 +12,7 @@ public class Timer : MonoBehaviour
 
     private bool timerRunning;
     public bool countdownOnly;
+    public bool instruction;
 
     public Text timerText;
     public Text startupText;
@@ -20,10 +21,15 @@ public class Timer : MonoBehaviour
     public ScoredEvent defaultEvent;
     public List<EventTagMap> eventTagMap;
 
+    public AudioSource StartOnClick;
+    public AudioSource bgm;
+    public AudioSource win;
+
     // Start is called before the first frame update
     void Start()
     {
         timerRunning = false;
+        //instruction = true;
         if (countdownOnly == false)
         {
             timerText.text = string.Format("{0:0}", timeRemaining); //Displays filler text if there's a countdown before timer starts
@@ -33,7 +39,7 @@ public class Timer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (beginAfter >= 0) //Checks to see if there's a countdown before timer starts
+        if (beginAfter >= 0 && instruction == false) //Checks to see if there's a countdown before timer starts
         {
             DisplayStartupText(); //Displays the startup text with the countdown
             beginAfter -= Time.deltaTime;
@@ -43,6 +49,7 @@ public class Timer : MonoBehaviour
                 startupText.gameObject.SetActive(false); //Hides the startup text
                 TriggerStart(); //Lets the game score manager begin to collect points
             }
+           
         }
         if (timeRemaining > 0 && timerRunning == true && countdownOnly == false)
         {
@@ -76,6 +83,8 @@ public class Timer : MonoBehaviour
         if (manager.gameObject.tag == "Score")
         {
             eventTagMap[1].tagEvent.Invoke(manager.gameObject); //Runs whatever's under the first tag which is "Disable Scoring"
+            bgm.Stop();
+            win.Play();
             return;
         }
         else if(manager.gameObject.tag == "Rise")
@@ -83,6 +92,7 @@ public class Timer : MonoBehaviour
             eventTagMap[0].tagEvent.Invoke(manager.gameObject); //Runs whatever's under the first tag which is "Enable Water"
             return;
         }
+        
     }
 
     public void TriggerStart() //Allows players to collect points
@@ -99,6 +109,19 @@ public class Timer : MonoBehaviour
         startupText.gameObject.SetActive(true);
         float timeLeft = Mathf.FloorToInt(beginAfter);
         startupText.text = string.Format("Game begins in: {0:0}", timeLeft);
+    }
+
+    //so countdown timers only starts after player click on startBtn
+    public void StartBtnClick()
+    {
+        instruction = false;
+        Debug.Log("button clicked");
+    }
+    //to play comfirmation UI sound effect
+    public void PlaySoundEffect()
+    {
+        StartOnClick.Play();
+        bgm.Play();
     }
 }
 
