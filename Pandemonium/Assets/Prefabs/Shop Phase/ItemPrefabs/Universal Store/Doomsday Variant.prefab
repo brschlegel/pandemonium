@@ -76,10 +76,6 @@ PrefabInstance:
       propertyPath: doomsday
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 3218877211296286144, guid: 4aa4ba9de9c6c434cb1d889af88524ec, type: 3}
-      propertyPath: itemType
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 3855630427391322353, guid: 4aa4ba9de9c6c434cb1d889af88524ec, type: 3}
       propertyPath: m_Name
       value: Doomsday Variant

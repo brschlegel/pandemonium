@@ -15,7 +15,6 @@ public class ShopInfo : MonoBehaviour
     private int maxRange; //Max range for the shops to serve the player
     public int shopNumber;
     public GameObject speechBubble;
-    public bool allowBuying;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,12 +34,24 @@ public class ShopInfo : MonoBehaviour
         speechBubble = Instantiate(speechBubble, DetermineBubbleLoc(), Quaternion.identity);
         for(int i = 0; i < inventory.Count; ++i)
         {
-            inventory[i] = Instantiate(inventory[i], new Vector3(0,0,0), inventory[i].transform.rotation);
-            inventory[i].GetComponent<ItemInfo>().shopNum = shopNumber;
+            inventory[i] = Instantiate(inventory[i], DetermineItemLoc(i), inventory[i].transform.rotation);
         }
     }
 
-  
+    public Vector3 DetermineItemLoc(int itemNum)
+    {
+        switch (itemNum)
+        {
+            case 0:
+                return new Vector3(speechBubble.transform.position.x + 3.6f, speechBubble.transform.position.y, speechBubble.transform.position.z - 3);
+            case 1:
+                return new Vector3(speechBubble.transform.position.x - .7f, speechBubble.transform.position.y, speechBubble.transform.position.z - 3);
+            case 2:
+                return new Vector3(speechBubble.transform.position.x - 4f, speechBubble.transform.position.y, speechBubble.transform.position.z - 3);
+
+        }
+        return new Vector3(0, 0, 0); //Should never hit this
+    }
     public Vector3 DetermineBubbleLoc()
     {
         switch (shopNumber)
@@ -63,11 +74,7 @@ public class ShopInfo : MonoBehaviour
         {
             if (Vector3.Distance(transform.position, PlayerList[i].transform.position) < maxRange) //If the distance between the shop and player is less than the max range...
             {
-                allowBuying = true;
-            }
-            else
-            {
-                allowBuying = false;
+
             }
         }
     }

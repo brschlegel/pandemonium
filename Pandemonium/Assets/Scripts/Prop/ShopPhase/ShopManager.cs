@@ -23,14 +23,12 @@ public class ShopManager : MonoBehaviour
     public GameObject doubleShopPrefab;
     public GameObject challengeShopPrefab;
     public GameObject universalShopPrefab;
-    public GameObject portal;
 
     public GameObject standardShopkeeper;
     public GameObject easterEggShopkeeper;
 
     public int shopCount;
     public int itemCount;
-    public int jumpCount = 0;
 
     // Master lists of possible items
     public List<GameObject> buffShopCatalogue;
@@ -62,14 +60,6 @@ public class ShopManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if (Input.GetKeyDown(KeyCode.Space))
-        //{
-        //    jumpCount += 1;
-        //}
-        //if(jumpCount >= 5)
-        //{
-        //    Instantiate(portal, new Vector3(0, 3, -7), Quaternion.identity);
-        //}
     }
 
     public void DetermineLocs()
@@ -114,10 +104,10 @@ public class ShopManager : MonoBehaviour
             {
                 seenIndices.Add(randNum);
                 subList.Add(mainList[randNum]);
-                
                 ++count;
             }
         }
+
         // Return sub list
         out_subList = subList;
     }
@@ -152,55 +142,35 @@ public class ShopManager : MonoBehaviour
                     ShopInfo si = shop.GetComponent<ShopInfo>();
                     si.shopName = "Self-Buff Store";
                     si.shopNumber = i; //This helps with speech bubble alignment since each one is different depending on the position
-                    GenerateSubList<GameObject>(buffShopCatalogue, out si.inventory, itemCount);
-                    for(int j = 0; j < si.inventory.Count; ++j)
-                    {
-                        si.inventory[j].GetComponent<ItemInfo>().itemSlot = j;
-                    }
+                    GenerateSubList(buffShopCatalogue, out si.inventory, itemCount);
                     break;
                 case ShopType.Nerf:
                     shop = Instantiate(sabotageShopPrefab, shopLocList[i], Quaternion.Euler(0f, -90f, 0f));
                     si = shop.GetComponent<ShopInfo>();
                     si.shopName = "Sabotage Store";
                     si.shopNumber = i;
-                    GenerateSubList<GameObject>(sabotageShopCatalogue, out si.inventory, itemCount);
-                    for (int j = 0; j < si.inventory.Count; ++j)
-                    {
-                        si.inventory[j].GetComponent<ItemInfo>().itemSlot = j;
-                    }
+                    GenerateSubList(sabotageShopCatalogue, out si.inventory, itemCount);
                     break;
                 case ShopType.Double:
                     shop = Instantiate(doubleShopPrefab, shopLocList[i], Quaternion.Euler(0f, -90f, 0f));
                     si = shop.GetComponent<ShopInfo>();
                     si.shopName = "Double-Edged Store";
                     si.shopNumber = i;
-                    GenerateSubList<GameObject>(doubleShopCatalogue, out si.inventory, itemCount);
-                    for (int j = 0; j < si.inventory.Count; ++j)
-                    {
-                        si.inventory[j].GetComponent<ItemInfo>().itemSlot = j;
-                    }
+                    GenerateSubList(doubleShopCatalogue, out si.inventory, itemCount);
                     break;
                 case ShopType.Challenge:
                     shop = Instantiate(challengeShopPrefab, shopLocList[i], Quaternion.Euler(0f, -90f, 0f));
                     si = shop.GetComponent<ShopInfo>();
                     si.shopName = "Challenge Store";
                     si.shopNumber = i;
-                    GenerateSubList<GameObject>(challengeShopCatalogue, out si.inventory, itemCount);
-                    for (int j = 0; j < si.inventory.Count; ++j)
-                    {
-                        si.inventory[j].GetComponent<ItemInfo>().itemSlot = j;
-                    }
+                    GenerateSubList(challengeShopCatalogue, out si.inventory, itemCount);
                     break;
                 case ShopType.Universal:
                     shop = Instantiate(universalShopPrefab, shopLocList[i], Quaternion.Euler(0f, -90f, 0f));
                     si = shop.GetComponent<ShopInfo>();
                     si.shopName = "Universal Store";
                     si.shopNumber = i;
-                    GenerateSubList<GameObject>(universalShopCatalogue, out si.inventory, itemCount);
-                    for (int j = 0; j < si.inventory.Count; ++j)
-                    {
-                        si.inventory[j].GetComponent<ItemInfo>().itemSlot = j;
-                    }
+                    GenerateSubList(universalShopCatalogue, out si.inventory, itemCount);
                     break;
             }
         }

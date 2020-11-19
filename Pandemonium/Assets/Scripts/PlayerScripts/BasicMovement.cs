@@ -3,9 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Events;
+using System;
 
 public class BasicMovement : MonoBehaviour
 {
+    
+    public AudioSource movementSound;
+    public AudioSource jumpSound;
+    public AudioSource dashSound;
+    public AudioClip clip;
+    public AudioClip clip2;
+
+    private void Start()
+    {
+        
+    }
+
     #region Variables
 
     private GroundColliderScript groundCallBack;
@@ -30,8 +43,8 @@ public class BasicMovement : MonoBehaviour
     public float jumpMovementVelocityRatio = .5f;
     public float jumpForce = 500f;
     public float maxJumps = 2;
-    public bool moving = false;
-    public Vector2 movementDirection;
+    private bool moving = false;
+    Vector2 movementDirection;
     private bool grounded = true;
 
     private float jumpMaxVelocityChange;
@@ -40,6 +53,9 @@ public class BasicMovement : MonoBehaviour
     #endregion
     private void Awake()
     {
+
+
+       
         groundCallBack = transform.GetChild(0).GetComponent<GroundColliderScript>();
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
@@ -49,28 +65,37 @@ public class BasicMovement : MonoBehaviour
         groundCallBack.groundCollision.AddListener(GroundCollision);
         rotator = rotatorGO.GetComponent<PlayerRotator>();
     }
-
+   
     #region Event Methods
     //Called when bottom collider hits ground
     public void GroundCollision(Collider other)
     {
         grounded = true;
         jumps = 0;
+        movementSound = GetComponent<AudioSource>();
 
     }
 
     public void OnMovement(InputAction.CallbackContext ctx)
     {
+        movementSound.Play();
         if (ctx.performed)
         {
             movementDirection = ctx.ReadValue<Vector2>();
             Moving();
             
+            moving = true;
+            movementSound.Play();
+            if (rotator != null){
+            rotator.Forward = new Vector3(movementDirection.x,0,movementDirection.y);
+                movementSound.Play();
+            }
 
         }
         else if (ctx.canceled)
         {
             moving = false;
+            movementSound.Stop();
         }
     }
 
@@ -87,16 +112,10 @@ public class BasicMovement : MonoBehaviour
 
     public void OnJump(InputAction.CallbackContext ctx)
     {
-        if(ctx.performed){
-            Jump();
-
-        }
-       
-    }
-
-    public void Jump(){
-     if (jumps < maxJumps - 1 )
+        //jumpSound = GetComponent<AudioSource>();
+        if (jumps < maxJumps - 1 && ctx.performed)
         {
+            jumpSound.PlayOneShot(clip);
             movementDirection = Vector2.zero;
             moving = false;
             rb.AddForce(0, jumpForce, 0, ForceMode.VelocityChange);
@@ -106,22 +125,13 @@ public class BasicMovement : MonoBehaviour
 
     public void OnDash(InputAction.CallbackContext ctx)
     {
-        if(ctx.performed){
-            
-            Dash();
-        }
-    }
-
-    public void Dash(){
-           if (canDash)
+        if (canDash)
         {
-           
-
+            dashSound.PlayOneShot(clip2);
             canDash = false;
             dashVelocity = dashSpeed * ((new Vector3(movementDirection.x, 0, movementDirection.y)).normalized);
-            StartCoroutine(Cooldown(dashCooldown));
-      
-            StartCoroutine(Dash(.15f));
+            StartCoroutine("Cooldown", dashCooldown);
+            StartCoroutine("Dash", .25f);
 
         }
     }
@@ -138,7 +148,6 @@ public class BasicMovement : MonoBehaviour
     {
         Vector3 prevVelocity = rb.velocity;
         rb.velocity = dashVelocity;
-       
         yield return new WaitForSeconds(time);
         rb.velocity = prevVelocity;
     }
@@ -147,16 +156,21 @@ public class BasicMovement : MonoBehaviour
     #endregion
     private void FixedUpdate()
     {
-     
         //I really wish there was an neater way to do this, but I think this is the only way to have continous movement on a held key
         if (grounded)
         {
+
+            // jumpSound.Play();
+            //jumpSound.Stop();
             if (moving)
             {
-
+                
                 Vector3 targetVelocity = new Vector3(movementDirection.x, 0, movementDirection.y);
                 targetVelocity = transform.TransformDirection(targetVelocity);
                 targetVelocity *= speed;
+                //movementSound.Play();
+               
+                
 
                 Vector3 velocity = rb.velocity;
                 Vector3 velocityChange = (targetVelocity - velocity);
@@ -169,7 +183,9 @@ public class BasicMovement : MonoBehaviour
                 //this is used for a bit more friction 
               
                 rb.velocity *= frictionCoeff;
-         
+                
+
+               
             }
         }
 
@@ -177,7 +193,7 @@ public class BasicMovement : MonoBehaviour
         if (!grounded)
         {
             rb.AddForce(new Vector3(0, -2 * gravity * rb.mass, 0));
-
+           
             Vector3 targetVelocity = new Vector3(movementDirection.x, 0, movementDirection.y);
             targetVelocity = transform.TransformDirection(targetVelocity);
             targetVelocity *= speed * jumpMovementVelocityRatio;
@@ -188,6 +204,7 @@ public class BasicMovement : MonoBehaviour
             velocityChange.z = Mathf.Clamp(velocityChange.z, -jumpMaxVelocityChange, jumpMaxVelocityChange);
             velocityChange.y = 0;
             rb.AddForce(velocityChange);
+            //jumpSound.Play();
 
         }
 
@@ -198,8 +215,7 @@ public class BasicMovement : MonoBehaviour
         //movementDirection = Vector2.zero;
         grounded = false;
     }
-
-
+    
 
 }
 
