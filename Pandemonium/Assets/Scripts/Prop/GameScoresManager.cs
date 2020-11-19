@@ -20,6 +20,7 @@ public class GameScoresManager : MonoBehaviour
     public Text Blue_Score_txt;
     public Text Purple_Score_txt;
     public Text Yellow_Score_txt;
+    
 
     void Start()
     {
@@ -160,5 +161,6 @@ public class GameScoresManager : MonoBehaviour
         {
             TempWinnerText.text = colorsWithHighestScore[0] + " wins with a score of " + highestScore + "!";
         }
+        
     }
 }
