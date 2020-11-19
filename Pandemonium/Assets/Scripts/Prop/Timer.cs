@@ -46,7 +46,7 @@ public class Timer : MonoBehaviour
                 TriggerStart(); //Lets the game score manager begin to collect points
             }
         }
-        if (timeRemaining > 0 && timerRunning == true && countdownOnly == false && instruction ==false)
+        if (timeRemaining > 0 && timerRunning == true && countdownOnly == false)
         {
             timeRemaining -= Time.deltaTime;
             if (timeRemaining < 0)
