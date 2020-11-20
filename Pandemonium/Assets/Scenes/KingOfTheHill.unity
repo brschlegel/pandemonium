@@ -3717,6 +3717,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f88860a5c65419408badff57e0ed34e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  winSound: {fileID: 0}
   isActive: 0
   canvas: {fileID: 861615478}
   TempWinnerText: {fileID: 0}
@@ -3941,7 +3942,7 @@ GameObject:
   - component: {fileID: 1754689313}
   m_Layer: 0
   m_Name: Sphere (2)
-  m_TagString: Untagged
+  m_TagString: island
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
