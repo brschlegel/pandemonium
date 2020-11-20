@@ -89,7 +89,6 @@ public class BasicMovement : MonoBehaviour
     }
     public void OnMovementEnd(InputAction.CallbackContext ctx)
     {
-        movementSound.Stop();
         moving = false;
     }
 
