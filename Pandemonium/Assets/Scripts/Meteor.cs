@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Meteor : MonoBehaviour
 {
+    public AudioSource explosionSound;
     public GameObject explosion;
     public float destructionHeight;
     public float rotateX;
@@ -18,6 +19,7 @@ public class Meteor : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        explosionSound = GetComponent<AudioSource>();
         YCount = transform.position.y;
     }
 
@@ -55,7 +57,20 @@ public class Meteor : MonoBehaviour
 
     public void Explode()
     {
+        
         Instantiate(explosion, transform.position, Quaternion.identity);
         Destroy(gameObject);
+    }
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "island")
+        {
+            explosionSound.Play();
+        }
+
+        if (collision.gameObject.tag == "MainCollider")
+        {
+            explosionSound.Play();
+        }
     }
 }

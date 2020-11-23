@@ -6,6 +6,12 @@ using UnityEngine.Events;
 
 public class BasicMovement : MonoBehaviour
 {
+    public AudioSource movementSound;
+    public AudioSource jumpSound;
+    public AudioSource dashSound;
+    public AudioClip clip;
+    public AudioClip clip2;
+
     #region Variables
 
     private GroundColliderScript groundCallBack;
@@ -56,18 +62,16 @@ public class BasicMovement : MonoBehaviour
     {
         grounded = true;
         jumps = 0;
-
+        movementSound = GetComponent<AudioSource>();
     }
 
     public void OnMovement(InputAction.CallbackContext ctx)
     {
         if (ctx.performed)
         {
+            movementSound.Play();
             movementDirection = ctx.ReadValue<Vector2>();
-            moving = true;
-            if(rotator != null){
-            rotator.Forward = new Vector3(movementDirection.x,0,movementDirection.y);
-            }
+            Moving();
             
 
         }
@@ -76,6 +80,13 @@ public class BasicMovement : MonoBehaviour
             moving = false;
         }
     }
+
+    public void Moving(){
+        moving = true;
+            if(rotator != null){
+            rotator.Forward = new Vector3(movementDirection.x,0,movementDirection.y);
+            }
+    }
     public void OnMovementEnd(InputAction.CallbackContext ctx)
     {
         moving = false;
@@ -83,9 +94,17 @@ public class BasicMovement : MonoBehaviour
 
     public void OnJump(InputAction.CallbackContext ctx)
     {
+        if(ctx.performed){
+            Jump();
 
-        if (jumps < maxJumps - 1 && ctx.performed)
+        }
+       
+    }
+
+    public void Jump(){
+     if (jumps < maxJumps - 1 )
         {
+            jumpSound.PlayOneShot(clip);
             movementDirection = Vector2.zero;
             moving = false;
             rb.AddForce(0, jumpForce, 0, ForceMode.VelocityChange);
@@ -95,12 +114,22 @@ public class BasicMovement : MonoBehaviour
 
     public void OnDash(InputAction.CallbackContext ctx)
     {
-        if (canDash)
+        if(ctx.performed){
+            dashSound.PlayOneShot(clip2);
+            Dash();
+        }
+    }
+
+    public void Dash(){
+           if (canDash)
         {
+           
+
             canDash = false;
             dashVelocity = dashSpeed * ((new Vector3(movementDirection.x, 0, movementDirection.y)).normalized);
-            StartCoroutine("Cooldown", dashCooldown);
-            StartCoroutine("Dash", .25f);
+            StartCoroutine(Cooldown(dashCooldown));
+      
+            StartCoroutine(Dash(.15f));
 
         }
     }
@@ -117,6 +146,7 @@ public class BasicMovement : MonoBehaviour
     {
         Vector3 prevVelocity = rb.velocity;
         rb.velocity = dashVelocity;
+       
         yield return new WaitForSeconds(time);
         rb.velocity = prevVelocity;
     }

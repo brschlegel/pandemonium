@@ -13,6 +13,8 @@ TagManager:
   - Blue
   - Green
   - Purple
+  - Arena
+  - island
   layers:
   - Default
   - TransparentFX

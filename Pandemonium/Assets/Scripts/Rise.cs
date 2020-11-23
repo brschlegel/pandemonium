@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Rise : MonoBehaviour
 {
+    public AudioSource deathSound;
     public float riseSpeed = .001f;
     public Stack<GameObject> podium;
     private bool isWaterActive; //Is the rising water active?
@@ -11,6 +12,7 @@ public class Rise : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        deathSound = GetComponent<AudioSource>();
         isWaterActive = false;
         podium = new Stack<GameObject>();
     }
@@ -38,6 +40,7 @@ public class Rise : MonoBehaviour
     }
 
     public void ElimPlayer(GameObject player){
+        deathSound.Play();
         player.transform.position = new Vector3(0,-100, 0);
         podium.Push(player);
         Debug.Log("Eliminated");
