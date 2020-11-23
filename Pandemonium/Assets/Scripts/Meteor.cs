@@ -2,8 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Meteor : MonoBehaviour
 {
+    public ScoredEvent defaultEvent;
+    public List<EventTagMap> eventTagMap;
+
     public AudioSource explosionSound;
     public GameObject explosion;
     public float destructionHeight;
@@ -66,11 +70,18 @@ public class Meteor : MonoBehaviour
         if (collision.gameObject.tag == "island")
         {
             explosionSound.Play();
+            Explode();
+            
         }
 
         if (collision.gameObject.tag == "MainCollider")
         {
             explosionSound.Play();
+            Explode();
+            Debug.Log("HIT");
+            //eventTagMap[0].tagEvent.Invoke(collision.gameObject);
         }
     }
+
+    
 }
