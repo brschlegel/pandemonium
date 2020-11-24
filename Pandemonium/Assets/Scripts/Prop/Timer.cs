@@ -24,6 +24,8 @@ public class Timer : MonoBehaviour
     public AudioSource StartOnClick;
     public AudioSource bgm;
     public AudioSource win;
+    public AudioClip clip;
+    public AudioClip clip2;
 
     // Start is called before the first frame update
     void Start()
@@ -46,6 +48,7 @@ public class Timer : MonoBehaviour
             {
                 timerRunning = true;
                 startupText.gameObject.SetActive(false); //Hides the startup text
+                StartOnClick.PlayOneShot(clip);
                 TriggerStart(); //Lets the game score manager begin to collect points
             }
            
@@ -83,7 +86,7 @@ public class Timer : MonoBehaviour
         {
             eventTagMap[1].tagEvent.Invoke(manager.gameObject); //Runs whatever's under the first tag which is "Disable Scoring"
             bgm.Stop();
-            win.Play();
+            win.PlayOneShot(clip2);
             return;
         }
         else if(manager.gameObject.tag == "Rise")
@@ -119,6 +122,7 @@ public class Timer : MonoBehaviour
     //to play comfirmation UI sound effect
     public void PlaySoundEffect()
     {
+
         StartOnClick.Play();
         bgm.Play();
     }
