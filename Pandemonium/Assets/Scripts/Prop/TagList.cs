@@ -32,4 +32,8 @@ public class TagList : MonoBehaviour
     {
         get { return tags.Count; }
     }
+
+    public void AddTag(string tagName){
+        tags.Add(tagName);
+    }
 }

@@ -2,8 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Meteor : MonoBehaviour
 {
+    public ScoredEvent defaultEvent;
+    public List<EventTagMap> eventTagMap;
+
+    public AudioSource explosionSound;
     public GameObject explosion;
     public float destructionHeight;
     public float rotateX;
@@ -18,6 +23,7 @@ public class Meteor : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        explosionSound = GetComponent<AudioSource>();
         YCount = transform.position.y;
     }
 
@@ -55,7 +61,27 @@ public class Meteor : MonoBehaviour
 
     public void Explode()
     {
+        
         Instantiate(explosion, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "island")
+        {
+            explosionSound.Play();
+            Explode();
+            
+        }
+
+        if (collision.gameObject.tag == "MainCollider")
+        {
+            explosionSound.Play();
+            Explode();
+            Debug.Log("HIT");
+            //eventTagMap[0].tagEvent.Invoke(collision.gameObject);
+        }
+    }
+
+    
 }

@@ -59,11 +59,12 @@ public class SoccerAI : MonoBehaviour
        // Debug.Log((goalWeight * goalVector + (ballWeight / minDistance) * toBall).normalized);
        if(i % 5 == 0){
         theta = GenerateNormalNoise(sigma,prevTheta);
+        prevTheta = theta;
        }
        Vector2 rNV = new Vector2(Mathf.Cos(theta), Mathf.Sin(theta));
        Vector2 centerBias = centerWeight * (new Vector2(transform.position.x,transform.position.z));
        
-        prevTheta = theta;
+        
        
         bm.movementDirection = (rNV - centerBias).normalized;
 
