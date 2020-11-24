@@ -15,8 +15,7 @@ public class HazardManager : MonoBehaviour
     {
         rand = new System.Random();
         bottomLeft = new Vector3(-25f, -27f, -23f);
-        topRight = new Vector3(61f, 2f, 60f);
-        //SpawnCrabs();   
+        topRight = new Vector3(61f, 2f, 60f);  
     }
 
     // Update is called once per frame
