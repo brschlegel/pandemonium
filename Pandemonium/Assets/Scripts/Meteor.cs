@@ -76,11 +76,12 @@ public class Meteor : MonoBehaviour
     }
     void OnCollisionEnter(Collision collision)
     {
+        explosionSound.PlayOneShot(clip);
         if (collision.gameObject.tag == "island")
         {
-            explosionSound.PlayOneShot(clip);
-            Explode();
             
+            Explode();
+            explosionSound.PlayOneShot(clip);
         }
 
         if (collision.gameObject.tag == "MainCollider")
