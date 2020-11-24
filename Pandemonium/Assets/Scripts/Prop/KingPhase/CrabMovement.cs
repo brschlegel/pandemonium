@@ -14,6 +14,8 @@ public class CrabMovement : MonoBehaviour
     private float Omega; // Rotational Speed, should be a small value
     private float AngleSign;
 
+    public ScoredEvent collisionEvent;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,13 +28,15 @@ public class CrabMovement : MonoBehaviour
         DeltaTicker = 0;
         DeltaTolerance = Mathf.PI / 4;
         AngleSign = 1;
+
+        collisionEvent.AddListener(GameObject.Find("Goal").GetComponent<Rise>().ElimPlayer);
     }
 
     // Update is called once per frame
     void Update()
     {
         // Angle change this frame
-        float delta = Omega * Time.deltaTime;
+        float delta = Omega;
         DeltaTicker += delta;
         moveSound.Play();
         // Reflect Angle Change direction if past the tolerance
@@ -61,6 +65,13 @@ public class CrabMovement : MonoBehaviour
       
     }
 
-
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "MainCollider")
+        {
+            collisionEvent.Invoke(collision.gameObject);
+            Debug.Log("HIT");
+        }
+    }
 }
 

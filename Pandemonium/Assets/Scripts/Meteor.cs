@@ -90,7 +90,6 @@ public class Meteor : MonoBehaviour
             Explode();
             collisionEvent.Invoke(collision.gameObject);
             Debug.Log("HIT");
-            //eventTagMap[0].tagEvent.Invoke(collision.gameObject);
         }
     }
 
