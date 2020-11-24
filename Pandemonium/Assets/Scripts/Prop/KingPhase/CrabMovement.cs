@@ -6,6 +6,7 @@ public class CrabMovement : MonoBehaviour
 {
     private System.Random rand;
 
+    public AudioSource moveSound;
     public float Speed;
     private float Angle;
     private float DeltaTicker; // Keeps track of the frame-by-frame change in Angle, reflecting the direction of change if it gets too high. This effectively ensures the crab will only move in a cone.
@@ -16,6 +17,7 @@ public class CrabMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        moveSound = GetComponent<AudioSource>();
         Speed = 20.0f;
         Omega = 0.01f;
         rand = new System.Random();
@@ -32,7 +34,7 @@ public class CrabMovement : MonoBehaviour
         // Angle change this frame
         float delta = Omega * Time.deltaTime;
         DeltaTicker += delta;
-
+        moveSound.Play();
         // Reflect Angle Change direction if past the tolerance
         if (DeltaTicker >= DeltaTolerance)
         {
@@ -45,7 +47,7 @@ public class CrabMovement : MonoBehaviour
         // Compute Velocity vector on the fly
         Vector3 velocity = new Vector3(Mathf.Cos(Angle), 0.0f, Mathf.Sin(Angle));
         this.transform.position = this.transform.position + velocity * Time.deltaTime;
-
+        
 
 
         //RandomMovement();
@@ -56,6 +58,7 @@ public class CrabMovement : MonoBehaviour
         float randX = rand.Next(-3, 3);
         float randY = rand.Next(0, 0);
         float randZ = rand.Next(-3, 3);
+      
     }
 
 

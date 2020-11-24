@@ -7,7 +7,8 @@ public class Meteor : MonoBehaviour
 {
     public ScoredEvent defaultEvent;
     public List<EventTagMap> eventTagMap;
-
+    
+    public AudioClip clip;
     public AudioSource explosionSound;
     public GameObject explosion;
     public float destructionHeight;
@@ -23,25 +24,29 @@ public class Meteor : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        explosionSound = GetComponent<AudioSource>();
+       
         YCount = transform.position.y;
     }
 
     // Update is called once per frame
     void Update()
     {
+        
         YCount = transform.position.y;
         if (rotate == true)
         {
+            //explosionSound.PlayOneShot(clip);
             transform.Rotate(rotateX, rotateY, rotateZ);
         }
         if(transform.position.y <= destructionHeight)
         {
+            explosionSound.PlayOneShot(clip);
             Explode();
         }
         PreviousYCount = transform.position.y;
         if(bounce == true)
         {
+            explosionSound.PlayOneShot(clip);
             if (PreviousYCount == YCount)
             {
                 stayCount += 1;
@@ -53,6 +58,7 @@ public class Meteor : MonoBehaviour
 
             if (stayCount == destructionCount)
             {
+                explosionSound.PlayOneShot(clip);
                 Explode();
             }
         }
@@ -61,7 +67,7 @@ public class Meteor : MonoBehaviour
 
     public void Explode()
     {
-        
+        explosionSound.PlayOneShot(clip);
         Instantiate(explosion, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
@@ -69,14 +75,14 @@ public class Meteor : MonoBehaviour
     {
         if (collision.gameObject.tag == "island")
         {
-            explosionSound.Play();
+            explosionSound.PlayOneShot(clip);
             Explode();
             
         }
 
         if (collision.gameObject.tag == "MainCollider")
         {
-            explosionSound.Play();
+            explosionSound.PlayOneShot(clip);
             Explode();
             Debug.Log("HIT");
             //eventTagMap[0].tagEvent.Invoke(collision.gameObject);

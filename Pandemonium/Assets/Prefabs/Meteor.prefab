@@ -4991,6 +4991,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+  clip: {fileID: 8300000, guid: d494cf9ff58075c439e973b947a24b6f, type: 3}
   explosionSound: {fileID: 678027072107471698}
   explosion: {fileID: 9100951555789632002, guid: 8ddd4180ede597e4f92ee0967ad6eac3, type: 3}
   destructionHeight: -35
@@ -5015,20 +5016,20 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: d494cf9ff58075c439e973b947a24b6f, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.4
+  m_Volume: 0.253
   m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 124
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
-  BypassListenerEffects: 0
+  BypassListenerEffects: 1
   BypassReverbZones: 0
   rolloffCustomCurve:
     serializedVersion: 2
