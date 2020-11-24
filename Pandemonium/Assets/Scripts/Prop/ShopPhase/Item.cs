@@ -2,14 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-/// <summary>
-/// Parent class for Items
-/// </summary>
-public abstract class PItem : MonoBehaviour
+public class Item : MonoBehaviour
 {
-    protected string itemName;
-    protected StatType statType;
-    protected ItemCategory itemCategory;
+    public string itemName;
+    private StatType statType;
+    private ItemCategory itemCategory;
     protected float statChange;
 
     /// <summary>
@@ -44,7 +41,7 @@ public abstract class PItem : MonoBehaviour
     /// <param name="category"></param>
     /// <param name="name"></param>
     /// <param name="statVal"></param>
-    public PItem(StatType stat, ItemCategory category, string name, float statVal)
+    public Item(StatType stat, ItemCategory category, string name, float statVal)
     {
         itemName = name;
         itemCategory = category;
@@ -56,7 +53,7 @@ public abstract class PItem : MonoBehaviour
     /// This method allows the item to affect the player
     /// </summary>
     /// <param name="player"></param>
-    public virtual void ItemEffect(PlayerInfo player)
+    public void ItemEffect(PlayerInfo player)
     {
         switch (statType)
         {

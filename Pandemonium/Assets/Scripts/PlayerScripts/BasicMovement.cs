@@ -19,7 +19,7 @@ public class BasicMovement : MonoBehaviour
     private PlayerRotator rotator;
     public Rigidbody rb;
     [Header("Movement Variables")]
-    public float speed = 10.0f;
+    public float speed = 10f;
     public float maxVelocityChange = 20.0f;
     public float dashTime = .25f;
     public float dashSpeed = 7;

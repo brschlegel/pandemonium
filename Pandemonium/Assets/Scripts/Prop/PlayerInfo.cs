@@ -15,12 +15,16 @@ public class PlayerInfo : MonoBehaviour
     public float knockback;
     public float moneyModifier;
 
+    public ItemInfo item;
+
     public string color;
     void Start()
     {
         name = gameObject.name;
         score = 0;
         money = 0;
+        speed = 10f;
+        size = 1f;
     }
 
     // Update is called once per frame
