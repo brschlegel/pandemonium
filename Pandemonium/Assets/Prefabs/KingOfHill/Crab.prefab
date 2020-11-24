@@ -92,6 +92,7 @@ GameObject:
   - component: {fileID: 6435036399122641199}
   - component: {fileID: 3842771441287472579}
   - component: {fileID: 570711880}
+  - component: {fileID: -8294829740042047338}
   m_Layer: 0
   m_Name: Crab
   m_TagString: Untagged
@@ -146,6 +147,18 @@ CapsuleCollider:
   m_Height: 0.02
   m_Direction: 2
   m_Center: {x: 0, y: 0.012, z: 0}
+--- !u!114 &-8294829740042047338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5910419455738489749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46ca29de5ac70fe459a7e131ed0b8aec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6191730847887915046
 GameObject:
   m_ObjectHideFlags: 0
