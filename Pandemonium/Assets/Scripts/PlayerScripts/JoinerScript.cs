@@ -19,7 +19,9 @@ public class JoinerScript : MonoBehaviour
     public Material tester;
     private int count;
 
+    private bool lockedIn;
     private RendererSelector rendererSelector;
+    public GameObject prefab;
     
 
     void Awake(){
@@ -30,12 +32,13 @@ public class JoinerScript : MonoBehaviour
         materialPerPlayer.Add(Player4);
         count = 0;
         colors = new string[4] {"Green", "Blue", "Purple", "Yellow"};
+        lockedIn = false;
     }
 
     public void OnPlayerJoined(PlayerInput playerInput){
         if(pim.maxPlayerCount > count ){
         playerInput.transform.SetParent(transform);
-        changePrefab(playerInput.gameObject);
+        prefab = changePrefab(playerInput.gameObject);
         //playerInput.actions = actionMap;
         count++;
         }
@@ -46,12 +49,25 @@ public class JoinerScript : MonoBehaviour
         
     }
 
-    void changePrefab(GameObject g)
+    GameObject changePrefab(GameObject g)
     {
         MeshRenderer mr = g.transform.GetChild(1).GetComponent<MeshRenderer>();
       
         mr.materials = materialPerPlayer[count];
         g.GetComponent<PlayerInfo>().color = colors[count];
+        return g;
+    }
      
+    public void PlayerLockIn()
+    {
+        Debug.Log("bruh");
+        if(!lockedIn){
+            int numAI = 4 - transform.childCount;
+            for(int i = 0; i < numAI; i++){
+               GameObject ai = Instantiate(prefab, transform.position,Quaternion.identity, transform);
+               ai.GetComponent<TagList>().AddTag("AI");
+            }
+            lockedIn = true;
+        }
     }
 }
