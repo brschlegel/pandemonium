@@ -40,13 +40,13 @@ public class SceneLoader : MonoBehaviour
         SceneManager.LoadScene(sceneName);
     }
 
-    public void Scene1Change(InputAction.CallbackContext ctx)
+    public void Scene1Change()
     {
-        if (ctx.performed)
-        {
+    
+    
             print("scene1change");
             StartCoroutine(LoadScene(sceneNames[0]));
-        }
+        
     }
 
     public void Scene2Change(InputAction.CallbackContext ctx)
