@@ -5022,10 +5022,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afae075e0d097c844b976e592e76ccf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  meteor: {fileID: 6835043454994625578, guid: 625cd6fc30745654c9b2de4e68ca49ea, type: 3}
+  meteor: {fileID: 5629381460345076662, guid: 625cd6fc30745654c9b2de4e68ca49ea, type: 3}
   platform: {fileID: 391825845}
   crab: {fileID: 5910419455738489749, guid: 5e5ee47809d93b44ba549f1ad008bd14, type: 3}
-  crabMaxCount: 0
+  crabMaxCount: 3
 --- !u!1 &2058529872
 GameObject:
   m_ObjectHideFlags: 0
