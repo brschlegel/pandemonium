@@ -4940,6 +4940,8 @@ MonoBehaviour:
   StartOnClick: {fileID: 1953063444}
   bgm: {fileID: 0}
   win: {fileID: 1953063445}
+  clip: {fileID: 8300000, guid: d2993d173338e6441a9eaf490b36a2bf, type: 3}
+  clip2: {fileID: 8300000, guid: b2da0cf64e1bbc34d9e36fec59dff789, type: 3}
 --- !u!4 &1953063443
 Transform:
   m_ObjectHideFlags: 0
