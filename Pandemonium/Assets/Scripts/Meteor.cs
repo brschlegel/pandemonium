@@ -20,11 +20,14 @@ public class Meteor : MonoBehaviour
     public int destructionCount;
     public float YCount;
     public float PreviousYCount;
+
+    public ScoredEvent collisionEvent;
     // Start is called before the first frame update
     void Start()
     {
         explosionSound = GetComponent<AudioSource>();
         YCount = transform.position.y;
+        collisionEvent.AddListener(GameObject.Find("Goal").GetComponent<Rise>().ElimPlayer);
     }
 
     // Update is called once per frame
@@ -78,6 +81,7 @@ public class Meteor : MonoBehaviour
         {
             explosionSound.Play();
             Explode();
+            collisionEvent.Invoke(collision.gameObject);
             Debug.Log("HIT");
             //eventTagMap[0].tagEvent.Invoke(collision.gameObject);
         }

@@ -862,6 +862,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 513208122908906629, guid: 64c51552cc07c9647bbc8ee45981b5f2, type: 3}
+      propertyPath: eventTagMap.Array.data[0].tagEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 513208122908906629, guid: 64c51552cc07c9647bbc8ee45981b5f2, type: 3}
       propertyPath: eventTagMap.Array.data[0].tag
       value: Player
       objectReference: {fileID: 0}
@@ -880,6 +884,30 @@ PrefabInstance:
     - target: {fileID: 513208122908906629, guid: 64c51552cc07c9647bbc8ee45981b5f2, type: 3}
       propertyPath: eventTagMap.Array.data[0].tagEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 513208122908906629, guid: 64c51552cc07c9647bbc8ee45981b5f2, type: 3}
+      propertyPath: eventTagMap.Array.data[0].tagEvent.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: SceneLoader, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 513208122908906629, guid: 64c51552cc07c9647bbc8ee45981b5f2, type: 3}
+      propertyPath: eventTagMap.Array.data[0].tagEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 513208122908906629, guid: 64c51552cc07c9647bbc8ee45981b5f2, type: 3}
+      propertyPath: eventTagMap.Array.data[0].tagEvent.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 513208122908906629, guid: 64c51552cc07c9647bbc8ee45981b5f2, type: 3}
+      propertyPath: eventTagMap.Array.data[0].tagEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1221617439}
+    - target: {fileID: 513208122908906629, guid: 64c51552cc07c9647bbc8ee45981b5f2, type: 3}
+      propertyPath: eventTagMap.Array.data[0].tagEvent.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: Scene1Change
+      objectReference: {fileID: 0}
+    - target: {fileID: 513208122908906629, guid: 64c51552cc07c9647bbc8ee45981b5f2, type: 3}
+      propertyPath: eventTagMap.Array.data[0].tagEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 513208122908906631, guid: 64c51552cc07c9647bbc8ee45981b5f2, type: 3}
       propertyPath: m_Name
