@@ -63,10 +63,21 @@ public class SceneLoader : MonoBehaviour
                 StartCoroutine(LoadScene("PlayerJoin"));
                 break;
             case "PlayerJoin":
-                StartCoroutine(LoadScene("ShopPhase"));
+                //StartCoroutine(LoadScene("ShopPhase"));
+                int rand = Random.Range(0, 2);
+                if (rand == 0)
+                {
+                    StartCoroutine(LoadScene("Soccer"));
+                    globalStats.minigameCount += 1;
+                }
+                else
+                {
+                    StartCoroutine(LoadScene("KingOfTheHill"));
+                    globalStats.minigameCount += 1;
+                }
                 break;
             case "ShopPhase":
-                int rand = Random.Range(0, 2);
+                 rand = Random.Range(0, 2);
                 if (rand == 0)
                 {
                     StartCoroutine(LoadScene("Soccer"));
@@ -85,7 +96,18 @@ public class SceneLoader : MonoBehaviour
                 }
                 else
                 {
-                    StartCoroutine(LoadScene("ShopPhase"));
+                   // StartCoroutine(LoadScene("ShopPhase"));
+                      rand = Random.Range(0, 2);
+                if (rand == 0)
+                {
+                    StartCoroutine(LoadScene("Soccer"));
+                    globalStats.minigameCount += 1;
+                }
+                else
+                {
+                    StartCoroutine(LoadScene("KingOfTheHill"));
+                    globalStats.minigameCount += 1;
+                }
                 }
                 break;
             case "KingOfTheHill":
@@ -95,7 +117,18 @@ public class SceneLoader : MonoBehaviour
                 }
                 else
                 {
-                    StartCoroutine(LoadScene("ShopPhase"));
+                   // StartCoroutine(LoadScene("ShopPhase"));
+                      rand = Random.Range(0, 2);
+                if (rand == 0)
+                {
+                    StartCoroutine(LoadScene("Soccer"));
+                    globalStats.minigameCount += 1;
+                }
+                else
+                {
+                    StartCoroutine(LoadScene("KingOfTheHill"));
+                    globalStats.minigameCount += 1;
+                }
                 }
                 break;
             default:
