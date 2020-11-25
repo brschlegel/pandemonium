@@ -36,11 +36,13 @@ public class JoinerScript : MonoBehaviour
     }
 
     public void OnPlayerJoined(PlayerInput playerInput){
-        if(pim.maxPlayerCount > count ){
-        playerInput.transform.SetParent(transform);
-        prefab = changePrefab(playerInput.gameObject);
-        //playerInput.actions = actionMap;
-        count++;
+        if (pim.maxPlayerCount > count)
+        {
+            playerInput.transform.SetParent(transform);
+            prefab = changePrefab(playerInput.gameObject);
+            prefab.GetComponent<PlayerInfo>().money = 50;
+            //playerInput.actions = actionMap;
+            count++;
         }
     }
     // Update is called once per frame

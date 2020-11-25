@@ -16,18 +16,19 @@ public class ShopInfo : MonoBehaviour
     public int shopNumber;
     public GameObject speechBubble;
     public bool allowBuying;
+    private List<Transform> playerList = new List<Transform>();
     // Start is called before the first frame update
     void Start()
     {
         maxRange = 5;
         DisplayInventory();
-        Debug.Log(shopNumber);
+        GetPlayers();
     }
 
     // Update is called once per frame
     void Update()
     {
-        //Comment
+   
     }
 
     public void DisplayInventory()
@@ -40,7 +41,16 @@ public class ShopInfo : MonoBehaviour
         }
     }
 
-  
+    public void GetPlayers()
+    {
+        GameObject inputManager = GameObject.Find("InputManager");
+        foreach (Transform child in inputManager.transform)
+        {
+            playerList.Add(child);
+            Debug.Log(child.GetComponent<PlayerInfo>().money);
+        }
+    }
+
     public Vector3 DetermineBubbleLoc()
     {
         switch (shopNumber)
