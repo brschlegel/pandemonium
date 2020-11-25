@@ -955,7 +955,7 @@ GameObject:
   - component: {fileID: 961812227}
   - component: {fileID: 961812226}
   m_Layer: 5
-  m_Name: Timer
+  m_Name: CTimer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1259,6 +1259,9 @@ MonoBehaviour:
   beginAfter: 3
   timerText: {fileID: 961812226}
   startupText: {fileID: 479016485}
+  endEvent:
+    m_PersistentCalls:
+      m_Calls: []
   defaultEvent:
     m_PersistentCalls:
       m_Calls: []
