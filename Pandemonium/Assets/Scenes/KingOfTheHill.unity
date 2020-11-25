@@ -4937,6 +4937,18 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+        - m_Target: {fileID: 2007641396}
+          m_TargetAssemblyTypeName: SKManager, Assembly-CSharp
+          m_MethodName: EnableHazards
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
   StartOnClick: {fileID: 1953063444}
   bgm: {fileID: 0}
   win: {fileID: 1953063445}
