@@ -5210,7 +5210,7 @@ GameObject:
   - component: {fileID: 1953063445}
   - component: {fileID: 1953063444}
   m_Layer: 0
-  m_Name: CountdownTimer
+  m_Name: Timer
   m_TagString: Rise
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
