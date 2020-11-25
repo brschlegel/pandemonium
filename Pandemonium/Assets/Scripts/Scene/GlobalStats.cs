@@ -8,6 +8,7 @@ public class GlobalStats : MonoBehaviour
     public static GlobalStats instance;
 
     public List<PlayerInfo> playerStats = new List<PlayerInfo>();
+    public int minigameCount = 0;
 
     private void Awake()
     {
