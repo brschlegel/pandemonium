@@ -25,21 +25,36 @@ public class SceneLoader : MonoBehaviour
     {
         currentScene = SceneManager.GetActiveScene().name;
        
-        SceneManager.activeSceneChanged +=  De;
+        SceneManager.activeSceneChanged +=  SceneChange;
     }
     
-    public void De(Scene current, Scene nxt){
-         Debug.Log(currentScene);
-    }
-    private void Update()
-    {
-        if (timer != null && timer.GetComponent<Timer>().timeRemaining == 0 )
-        {
-            print("called load next scene");
-            LoadNextScene();
+    public void SceneChange(Scene current, Scene nxt){
+        timer = GameObject.Find("Timer");
+        currentScene = nxt.name;
+        Transform im = transform.GetChild(1);
+        foreach(Transform c in im){
+            c.position = transform.position;
+        }
+        if(currentScene == "ShopPhase"){
+            timer.GetComponent<ShopTimer>().endEvent.AddListener(LoadNextSceneEvent) ;
+        }
+        else if(timer != null){
+            timer.GetComponent<Timer>().endEvent.AddListener(LoadNextSceneEvent) ;
+            if(currentScene == "Soccer"){
+                timer.GetComponent<Timer>().manager = transform.GetChild(0).gameObject;
+            }
         }
     }
+    private void Update()
+    { 
+    
+    }
 
+    //super hacky
+    public void LoadNextSceneEvent(GameObject go){
+        Debug.Log("called from event");
+          LoadNextScene();
+    }
     public void LoadNextScene()
     {
         switch (currentScene)

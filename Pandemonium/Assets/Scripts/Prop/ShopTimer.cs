@@ -12,6 +12,7 @@ public class ShopTimer : MonoBehaviour
     private bool timerRunning;
     public Text timerText;
     public Text startupText;
+    public ScoredEvent endEvent;
 
     public ScoredEvent defaultEvent;
     public List<EventTagMap> eventTagMap;
@@ -70,6 +71,7 @@ public class ShopTimer : MonoBehaviour
         timerText.gameObject.SetActive(false);
         startupText.text = "Phase end!";
         startupText.gameObject.SetActive(true);
+        endEvent.Invoke(gameObject);
     }
 
     public void DisplayStartupText()

@@ -20,7 +20,7 @@ public class Timer : MonoBehaviour
 
     public ScoredEvent defaultEvent;
     public List<EventTagMap> eventTagMap;
-
+    public ScoredEvent endEvent;
     public AudioSource StartOnClick;
     public AudioSource bgm;
     public AudioSource win;
@@ -59,6 +59,7 @@ public class Timer : MonoBehaviour
             if (timeRemaining < 0)
             {
                 timeRemaining = 0; //This prevents the timer text from showing -1 
+                 endEvent.Invoke(gameObject);
             }
             DisplayTime(timeRemaining);
         }
@@ -68,6 +69,7 @@ public class Timer : MonoBehaviour
             {
                 TriggerEnd(); //Runs code that happens once timer hits 0
             }
+           
             timerRunning = false; //Stops the timer
         }
     }
