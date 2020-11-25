@@ -9052,7 +9052,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1709382922943246479, guid: 3f63fe62d143fc74c83247b120225760, type: 3}
       propertyPath: m_Name
-      value: Game Timer
+      value: Timer
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3f63fe62d143fc74c83247b120225760, type: 3}
