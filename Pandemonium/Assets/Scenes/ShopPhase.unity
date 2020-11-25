@@ -1028,7 +1028,7 @@ GameObject:
   - component: {fileID: 1120976641}
   - component: {fileID: 1120976640}
   m_Layer: 0
-  m_Name: Shop Timer
+  m_Name: Timer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
