@@ -347,6 +347,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1146813672522280147, guid: 30743d54add6cf44c9b72e4dc10c76ff, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6165435797937345345, guid: 30743d54add6cf44c9b72e4dc10c76ff, type: 3}
       propertyPath: scoreManager
       value: 
