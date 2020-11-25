@@ -24,11 +24,16 @@ public class SceneLoader : MonoBehaviour
     public void Awake()
     {
         currentScene = SceneManager.GetActiveScene().name;
+       
+        SceneManager.activeSceneChanged +=  De;
     }
-
+    
+    public void De(Scene current, Scene nxt){
+         Debug.Log(currentScene);
+    }
     private void Update()
     {
-        if (timer.GetComponent<Timer>().timeRemaining == 0)
+        if (timer != null && timer.GetComponent<Timer>().timeRemaining == 0 )
         {
             print("called load next scene");
             LoadNextScene();
@@ -91,4 +96,6 @@ public class SceneLoader : MonoBehaviour
 
         SceneManager.LoadScene(sceneName);
     }
+
+    
 }

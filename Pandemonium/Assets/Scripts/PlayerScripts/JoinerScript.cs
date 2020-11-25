@@ -60,7 +60,6 @@ public class JoinerScript : MonoBehaviour
      
     public void PlayerLockIn()
     {
-        Debug.Log("bruh");
         if(!lockedIn){
             int numAI = 4 - transform.childCount;
             for(int i = 0; i < numAI; i++){
