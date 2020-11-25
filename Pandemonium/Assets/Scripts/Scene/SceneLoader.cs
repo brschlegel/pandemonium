@@ -12,24 +12,76 @@ using UnityEngine.UI;
 public class SceneLoader : MonoBehaviour
 {
     public Animator transition;
-    public Text text;
     public float transitionTime = 1f;
 
     public bool change = false;
-    public string[] sceneNames = new string[3];
-    string chosenScene;
     string currentScene;
+
+    public GameScoresManager scoreManager;
+    public GlobalStats globalStats;
+    public GameObject timer;
 
     public void Awake()
     {
         currentScene = SceneManager.GetActiveScene().name;
-        text.text = "This is scene " + currentScene + "\nPress the 1, 2, or 3 keys to change the current scene.\nScene transition demo.";
     }
 
-    //public void LoadNextScene()
-    //{
-    //    StartCoroutine(LoadScene(chosenScene));
-    //}
+    private void Update()
+    {
+        if (timer.GetComponent<Timer>().timeRemaining == 0)
+        {
+            print("called load next scene");
+            LoadNextScene();
+        }
+    }
+
+    public void LoadNextScene()
+    {
+        switch (currentScene)
+        {
+            case "Menu":
+                StartCoroutine(LoadScene("PlayerJoin"));
+                break;
+            case "PlayerJoin":
+                StartCoroutine(LoadScene("ShopPhase"));
+                break;
+            case "ShopPhase":
+                int rand = Random.Range(0, 2);
+                if (rand == 0)
+                {
+                    StartCoroutine(LoadScene("Soccer"));
+                    globalStats.minigameCount += 1;
+                }
+                else
+                {
+                    StartCoroutine(LoadScene("KingOfTheHill"));
+                    globalStats.minigameCount += 1;
+                }
+                break;
+            case "Soccer":
+                if (globalStats.minigameCount == 4)
+                {
+                    StartCoroutine(LoadScene("End"));
+                }
+                else
+                {
+                    StartCoroutine(LoadScene("ShopPhase"));
+                }
+                break;
+            case "KingOfTheHill":
+                if (globalStats.minigameCount == 4)
+                {
+                    StartCoroutine(LoadScene("End"));
+                }
+                else
+                {
+                    StartCoroutine(LoadScene("ShopPhase"));
+                }
+                break;
+            default:
+                break;
+        }
+    }
 
     IEnumerator LoadScene(string sceneName)
     {
@@ -39,32 +91,4 @@ public class SceneLoader : MonoBehaviour
 
         SceneManager.LoadScene(sceneName);
     }
-
-    public void Scene1Change()
-    {
-    
-    
-            print("scene1change");
-            StartCoroutine(LoadScene(sceneNames[0]));
-        
-    }
-
-    public void Scene2Change(InputAction.CallbackContext ctx)
-    {
-        if (ctx.performed)
-        {
-            print("scene2change");
-            StartCoroutine(LoadScene(sceneNames[1]));
-        }
-    }
-
-    public void Scene3Change(InputAction.CallbackContext ctx)
-    {
-        if (ctx.performed)
-        {
-            print("scene3change");
-            StartCoroutine(LoadScene(sceneNames[2]));
-        }
-    }
-    
 }
