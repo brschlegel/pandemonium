@@ -15,6 +15,7 @@ TagManager:
   - Purple
   - Arena
   - island
+  - water
   layers:
   - Default
   - TransparentFX

@@ -13,6 +13,7 @@ public class SoccerLogic : MonoBehaviour
         degreeStep = 1;
         InvokeRepeating("StartRotate", 0, 10);
         InvokeRepeating("StopRotate", 5, 10);
+        deathSound = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame

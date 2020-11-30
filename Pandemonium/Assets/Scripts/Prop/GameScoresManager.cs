@@ -21,7 +21,7 @@ public class GameScoresManager : MonoBehaviour
     public Text Blue_Score_txt;
     public Text Purple_Score_txt;
     public Text Yellow_Score_txt;
-    
+   
 
     void Start()
     {
@@ -140,13 +140,16 @@ public class GameScoresManager : MonoBehaviour
 
     public void DisplayWinner(List<string> colorsWithHighestScore, int highestScore)
     {
+        
         TempWinnerText.gameObject.SetActive(true);
         if(colorsWithHighestScore.Count > 1) //There's a tie
         {
             TempWinnerText.text = "Winners are ";
             Debug.Log(colorsWithHighestScore.Count + " is count");
+
             for(int i = 0; i < colorsWithHighestScore.Count; i++)
             {
+                TempWinnerText.text = TempWinnerText.text + colorsWithHighestScore[i] + ", ";
                 if (i != colorsWithHighestScore.Count-1)
                 {
                     TempWinnerText.text = TempWinnerText.text + colorsWithHighestScore[i] + ", ";
