@@ -71,6 +71,14 @@ public class ShopTimer : MonoBehaviour
         timerText.gameObject.SetActive(false);
         startupText.text = "Phase end!";
         startupText.gameObject.SetActive(true);
+        GameObject canvas = GameObject.Find("Canvas");
+        foreach(Transform text in canvas.transform)
+        {
+            if(text.name != "Fade")
+            {
+                text.gameObject.SetActive(false);
+            }
+        }
         endEvent.Invoke(gameObject);
     }
 
@@ -80,5 +88,6 @@ public class ShopTimer : MonoBehaviour
         float timeLeft = Mathf.FloorToInt(beginAfter);
         startupText.text = string.Format("{0:0}", timeLeft);
     }
+
 }
 
