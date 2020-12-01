@@ -95,7 +95,7 @@ public class ItemInfo : MonoBehaviour
     {
         if(isBought == true)
         {
-            itemPriceText.gameObject.SetActive(false);
+            itemPriceText.text = "";
         }
     }
 

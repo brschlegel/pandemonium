@@ -33,6 +33,13 @@ public class ShopInfo : MonoBehaviour
     void Update()
     {
         DetectNearbyPlayers();
+        for(int i = 0; i < inventory.Count; ++i)
+        {
+            if(inventory[i].GetComponent<ItemInfo>().isBought == true)
+            {
+                inventory[i].transform.position = new Vector3(-50f, inventory[i].transform.position.y, inventory[i].transform.position.z);
+            }
+        }
     }
 
     public void CreatePlayerList()
@@ -108,13 +115,12 @@ public class ShopInfo : MonoBehaviour
             {
                 if (Vector3.Distance(plateList[j].transform.position, playerList[i].transform.position) < maxRange) //If the distance between the shop and player is less than the max range...
                 {
-                    if(playerList[i].GetComponent<PlayerInfo>().money >= inventory[j].GetComponent<ItemInfo>().price && inventory[j].GetComponent<ItemInfo>().isBought == false)
+                    if(playerList[i].GetComponent<PlayerInfo>().money >= inventory[j].GetComponent<ItemInfo>().price && inventory[j].GetComponent<ItemInfo>().isBought == false && playerList[i].GetComponent<PlayerInfo>().inventory.Count < 4)
                     {
                         playerList[i].GetComponent<PlayerInfo>().inventory.Add(inventory[j]);
                         playerList[i].GetComponent<PlayerInfo>().money -= inventory[j].GetComponent<ItemInfo>().price;
                         inventory[j].GetComponent<ItemInfo>().isBought = true;
                         plateList[j].GetComponent<Renderer>().material.color = Color.black;
-
                     }
                 }
                 else
