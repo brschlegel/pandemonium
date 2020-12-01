@@ -203,6 +203,9 @@ MonoBehaviour:
   inventory: []
   shopNumber: 0
   speechBubble: {fileID: 7445560141101828039, guid: e3742571865ed4a44af381885b6944d1, type: 3}
+  allowBuying: 0
+  playerList: []
+  platePrefab: {fileID: 7493173779197672932, guid: 6938bf5717212544ab4b24c6a98a8903, type: 3}
 --- !u!64 &7500491122218788147
 MeshCollider:
   m_ObjectHideFlags: 0

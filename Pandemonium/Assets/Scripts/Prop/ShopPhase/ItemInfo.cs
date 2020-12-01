@@ -25,6 +25,7 @@ public class ItemInfo : MonoBehaviour
     public bool universal;          //Is this item used on everyone?
     public bool isSpeedCup;
     public bool isMiniMe;
+    public bool isBought;
 
 
     public bool controlSwap;
@@ -80,6 +81,7 @@ public class ItemInfo : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        isBought = false;
         BuyButtonList.AddRange(new List<char> { 'X', 'Y', 'A' }); //Which button the user needs to press to buy the button. B is reserved for Dash
         canvas = GameObject.Find("Canvas");
         DetermineItemLoc();

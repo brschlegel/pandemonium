@@ -64,9 +64,12 @@ public class JoinerScript : MonoBehaviour
     {
         if(!lockedIn){
             int numAI = 4 - transform.childCount;
-            for(int i = 0; i < numAI; i++){
-               GameObject ai = Instantiate(prefab, transform.position,Quaternion.identity, transform);
-               ai.GetComponent<TagList>().AddTag("AI");
+            for (int i = 0; i < numAI; i++)
+            {
+                GameObject ai = Instantiate(prefab, transform.position, Quaternion.identity, transform);
+                ai.GetComponent<PlayerInfo>().money = 50;
+                ai.GetComponent<TagList>().AddTag("AI");
+
             }
             lockedIn = true;
         }

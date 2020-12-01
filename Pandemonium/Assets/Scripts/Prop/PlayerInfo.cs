@@ -14,6 +14,7 @@ public class PlayerInfo : MonoBehaviour
     public float dashPower;
     public float knockback;
     public float moneyModifier;
+    public List<GameObject> inventory = new List<GameObject>();
 
     public ItemInfo item;
 
@@ -22,7 +23,7 @@ public class PlayerInfo : MonoBehaviour
     {
         name = gameObject.name;
         score = 0;
-        money = 0;
+        //money = 0;
         speed = 10f;
         size = 1f;
     }
