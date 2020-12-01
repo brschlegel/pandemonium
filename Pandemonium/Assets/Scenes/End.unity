@@ -231,6 +231,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50b91de5ead7071409fb654d7ec075ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerList: []
+  winners: []
+  winnerText: {fileID: 0}
 --- !u!4 &702663234
 Transform:
   m_ObjectHideFlags: 0
@@ -334,7 +337,7 @@ GameObject:
   - component: {fileID: 836978071}
   - component: {fileID: 836978072}
   m_Layer: 5
-  m_Name: Text
+  m_Name: WinnerNames
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -392,7 +395,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Insert Winner's Name Here
+  m_Text: 
 --- !u!222 &836978070
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -587,7 +590,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Winner
+  m_Text: Wins!
 --- !u!222 &963586238
 CanvasRenderer:
   m_ObjectHideFlags: 0
