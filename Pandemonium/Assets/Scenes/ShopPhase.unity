@@ -1530,6 +1530,7 @@ MonoBehaviour:
   endEvent:
     m_PersistentCalls:
       m_Calls: []
+  beepSound: {fileID: 1120976642}
   defaultEvent:
     m_PersistentCalls:
       m_Calls: []
