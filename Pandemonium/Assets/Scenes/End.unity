@@ -233,7 +233,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerList: []
   winners: []
-  winnerText: {fileID: 0}
+  winnerText: {fileID: 836978069}
 --- !u!4 &702663234
 Transform:
   m_ObjectHideFlags: 0
