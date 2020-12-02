@@ -25,6 +25,8 @@ public class ItemInfo : MonoBehaviour
     public bool universal;          //Is this item used on everyone?
     public bool isSpeedCup;
     public bool isMiniMe;
+    public bool isBought;
+    public Text itemPriceText;
 
 
     public bool controlSwap;
@@ -80,6 +82,7 @@ public class ItemInfo : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        isBought = false;
         BuyButtonList.AddRange(new List<char> { 'X', 'Y', 'A' }); //Which button the user needs to press to buy the button. B is reserved for Dash
         canvas = GameObject.Find("Canvas");
         DetermineItemLoc();
@@ -90,6 +93,10 @@ public class ItemInfo : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(isBought == true)
+        {
+            itemPriceText.text = "";
+        }
     }
 
     public void DetermineItemLoc()
@@ -387,10 +394,11 @@ public class ItemInfo : MonoBehaviour
         {
             addYOffset = -miniMeOffset;
         }
-        Instantiate(CreateText("Arial.ttf", 14, new Vector2(50, 20), xOffset, yOffset, addXOffset, addYOffset, addZOffset));
-
+        itemPriceText = Instantiate(CreateText("Arial.ttf", 14, new Vector2(50, 20), xOffset, yOffset, addXOffset, addYOffset, addZOffset));
+        
 
     }
+
     public Text CreateText(string fontName, int fontSize, Vector2 textBoxSize, float xOffset, float yOffset, float addXOffset, float addYOffset, float addZOffset)
     {
         GameObject parentText = new GameObject("PriceText");
@@ -398,7 +406,7 @@ public class ItemInfo : MonoBehaviour
         parentText.transform.SetParent(canvas.transform); //Set its parent to the the item prefab
         Text tempText = parentText.AddComponent<Text>();
 
-        tempText.text = price + " (" + BuyButtonList[itemSlot] + ")"; //Ex. price (X)
+        tempText.text = price + ""; //Ex. price (X)
         tempText.color = Color.black;
         tempText.font = Resources.GetBuiltinResource(typeof(Font), fontName) as Font; //This lets us easily change the font to whatever we want. Ex. FontName.ttf
         tempText.rectTransform.sizeDelta = textBoxSize; //Size of the box surrounding the text. This affects placement

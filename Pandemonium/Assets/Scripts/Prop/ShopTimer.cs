@@ -14,12 +14,14 @@ public class ShopTimer : MonoBehaviour
     public Text startupText;
     public ScoredEvent endEvent;
 
+    public AudioSource beepSound;
     public ScoredEvent defaultEvent;
     public List<EventTagMap> eventTagMap;
 
     // Start is called before the first frame update
     void Start()
     {
+        beepSound = GetComponent<AudioSource>();
         timerText.gameObject.SetActive(false);
         timerRunning = false;
         timerText.text = string.Format("Time Left: {0:0}", timeRemaining); //Displays filler text if there's a countdown before timer starts
@@ -68,9 +70,18 @@ public class ShopTimer : MonoBehaviour
 
     public void TriggerEnd()
     {
+        beepSound.Play();
         timerText.gameObject.SetActive(false);
         startupText.text = "Phase end!";
         startupText.gameObject.SetActive(true);
+        GameObject canvas = GameObject.Find("Canvas");
+        foreach(Transform text in canvas.transform)
+        {
+            if(text.name != "Fade")
+            {
+                text.gameObject.SetActive(false);
+            }
+        }
         endEvent.Invoke(gameObject);
     }
 
@@ -80,5 +91,6 @@ public class ShopTimer : MonoBehaviour
         float timeLeft = Mathf.FloorToInt(beginAfter);
         startupText.text = string.Format("{0:0}", timeLeft);
     }
+
 }
 

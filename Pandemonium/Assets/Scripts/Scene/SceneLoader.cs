@@ -57,24 +57,24 @@ public class SceneLoader : MonoBehaviour
     }
     public void LoadNextScene()
     {
+        int rand = Random.Range(0, 2);
         switch (currentScene)
         {
             case "Menu":
                 StartCoroutine(LoadScene("PlayerJoin"));
                 break;
             case "PlayerJoin":
-                //StartCoroutine(LoadScene("ShopPhase"));
-                int rand = Random.Range(0, 2);
-                if (rand == 0)
-                {
-                    StartCoroutine(LoadScene("Soccer"));
-                    globalStats.minigameCount += 1;
-                }
-                else
-                {
-                    StartCoroutine(LoadScene("KingOfTheHill"));
-                    globalStats.minigameCount += 1;
-                }
+                StartCoroutine(LoadScene("ShopPhase"));
+                //if (rand == 0)
+                //{
+                //    StartCoroutine(LoadScene("Soccer"));
+                //    globalStats.minigameCount += 1;
+                //}
+                //else
+                //{
+                //    StartCoroutine(LoadScene("KingOfTheHill"));
+                //    globalStats.minigameCount += 1;
+                //}
                 break;
             case "ShopPhase":
                  rand = Random.Range(0, 2);
@@ -96,7 +96,7 @@ public class SceneLoader : MonoBehaviour
                 }
                 else
                 {
-                   // StartCoroutine(LoadScene("ShopPhase"));
+                   StartCoroutine(LoadScene("ShopPhase"));
                       rand = Random.Range(0, 2);
                 if (rand == 0)
                 {
@@ -117,7 +117,7 @@ public class SceneLoader : MonoBehaviour
                 }
                 else
                 {
-                   // StartCoroutine(LoadScene("ShopPhase"));
+                    StartCoroutine(LoadScene("ShopPhase"));
                       rand = Random.Range(0, 2);
                 if (rand == 0)
                 {

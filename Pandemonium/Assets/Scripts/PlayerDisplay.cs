@@ -33,6 +33,7 @@ public class PlayerDisplay : MonoBehaviour
         foreach (Transform child in inputManager.transform)
         {
             playerList.Add(child);
+            Debug.Log(child.GetComponent<PlayerInfo>().money);
         }
     }
 }

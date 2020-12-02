@@ -15,20 +15,41 @@ public class ShopInfo : MonoBehaviour
     private int maxRange; //Max range for the shops to serve the player
     public int shopNumber;
     public GameObject speechBubble;
-    public bool allowBuying;
-    private List<Transform> playerList = new List<Transform>();
+    public List<Transform> playerList = new List<Transform>();
+    public List<Vector3> plateLoc = new List<Vector3>();
+    public List<GameObject> plateList = new List<GameObject>();
+    public GameObject platePrefab;
     // Start is called before the first frame update
     void Start()
     {
-        maxRange = 5;
+        DeterminePlateLoc();
+        CreatePlayerList();
+        maxRange = 3;
         DisplayInventory();
-        GetPlayers();
+        ChangePlateColor();
     }
 
     // Update is called once per frame
     void Update()
     {
-   
+        DetectNearbyPlayers();
+        for(int i = 0; i < inventory.Count; ++i)
+        {
+            if(inventory[i].GetComponent<ItemInfo>().isBought == true)
+            {
+                inventory[i].transform.position = new Vector3(-50f, inventory[i].transform.position.y, inventory[i].transform.position.z);
+            }
+        }
+    }
+
+    public void CreatePlayerList()
+    {
+        GameObject InputManager = GameObject.Find("InputManager");
+        foreach (Transform child in InputManager.transform)
+        {
+            playerList.Add(child);
+
+        }
     }
 
     public void DisplayInventory()
@@ -38,19 +59,12 @@ public class ShopInfo : MonoBehaviour
         {
             inventory[i] = Instantiate(inventory[i], new Vector3(0,0,0), inventory[i].transform.rotation);
             inventory[i].GetComponent<ItemInfo>().shopNum = shopNumber;
+            GameObject tempPlate = Instantiate(platePrefab, plateLoc[i], Quaternion.identity);
+            plateList.Add(tempPlate);
         }
     }
 
-    public void GetPlayers()
-    {
-        GameObject inputManager = GameObject.Find("InputManager");
-        foreach (Transform child in inputManager.transform)
-        {
-            playerList.Add(child);
-            Debug.Log(child.GetComponent<PlayerInfo>().money);
-        }
-    }
-
+  
     public Vector3 DetermineBubbleLoc()
     {
         switch (shopNumber)
@@ -67,17 +81,53 @@ public class ShopInfo : MonoBehaviour
 
     }
 
-    public void DetectNearbyPlayers(List<GameObject> PlayerList) //This code is really slow... should make it better
+    public void ChangePlateColor()
     {
-        for (int i = 0; i < PlayerList.Count; i++)
+        for(int i = 0; i < plateList.Count; ++i)
         {
-            if (Vector3.Distance(transform.position, PlayerList[i].transform.position) < maxRange) //If the distance between the shop and player is less than the max range...
+            switch(i)
             {
-                allowBuying = true;
+                case 0:
+                    plateList[i].GetComponent<Renderer>().material.color = Color.red;
+                    break;
+                case 1:
+                    plateList[i].GetComponent<Renderer>().material.color = Color.yellow;
+                    break;
+                case 2:
+                    plateList[i].GetComponent<Renderer>().material.color = Color.blue;
+                    break;
             }
-            else
+        }
+    }
+
+    public void DeterminePlateLoc()
+    {
+        plateLoc.Add(new Vector3(transform.position.x - 7f, 0, 3.5f));
+        plateLoc.Add(new Vector3(transform.position.x, 0, 3.5f));
+        plateLoc.Add(new Vector3(transform.position.x + 7f, 0, 3.5f));
+    }
+
+    public void DetectNearbyPlayers() //This code is really slow... should make it better
+    {
+        for (int i = 0; i < playerList.Count; i++)
+        {
+            for(int j = 0; j < plateList.Count; j++)
             {
-                allowBuying = false;
+                if (Vector3.Distance(plateList[j].transform.position, playerList[i].transform.position) < maxRange) //If the distance between the shop and player is less than the max range...
+                {
+                    if(playerList[i].GetComponent<PlayerInfo>().money >= inventory[j].GetComponent<ItemInfo>().price && inventory[j].GetComponent<ItemInfo>().isBought == false && playerList[i].GetComponent<PlayerInfo>().inventory.Count < 4)
+                    {
+                        playerList[i].GetComponent<PlayerInfo>().inventory.Add(inventory[j]);
+                        playerList[i].GetComponent<PlayerInfo>().money -= inventory[j].GetComponent<ItemInfo>().price;
+                        inventory[j].GetComponent<ItemInfo>().isBought = true;
+                        plateList[j].GetComponent<Renderer>().material.color = Color.black;
+                    }
+                }
+                else
+                {
+
+                    
+                }
             }
         }
     }
