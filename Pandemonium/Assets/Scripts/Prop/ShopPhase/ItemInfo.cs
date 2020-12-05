@@ -27,7 +27,7 @@ public class ItemInfo : MonoBehaviour
     public bool isMiniMe;
     public bool isBought;
     public Text itemPriceText;
-
+    public AudioSource buySound;
 
     public bool controlSwap;
     public bool doomsday;
@@ -82,12 +82,14 @@ public class ItemInfo : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        buySound = GetComponent<AudioSource>();
         isBought = false;
         BuyButtonList.AddRange(new List<char> { 'X', 'Y', 'A' }); //Which button the user needs to press to buy the button. B is reserved for Dash
         canvas = GameObject.Find("Canvas");
         DetermineItemLoc();
         this.transform.position = itemLoc;
         DisplayPrice();
+        isBought2();
     }
 
     // Update is called once per frame
@@ -95,12 +97,32 @@ public class ItemInfo : MonoBehaviour
     {
         if(isBought == true)
         {
+            buySound.Play();
             itemPriceText.text = "";
+            isBought = false;
         }
     }
 
+    void FixedUpdate()
+    {
+        
+    }
+
+    public void isBought2()
+    {
+        if (isBought == true)
+        {
+
+            
+        }
+    }
+    void OnCollisionEnter()
+    {
+        buySound.Play();
+    }
     public void DetermineItemLoc()
     {
+        
         itemLoc = new Vector3(0, 0, 0);
         if(itemType == ItemCategory.Buff)
         {
@@ -411,9 +433,9 @@ public class ItemInfo : MonoBehaviour
         tempText.font = Resources.GetBuiltinResource(typeof(Font), fontName) as Font; //This lets us easily change the font to whatever we want. Ex. FontName.ttf
         tempText.rectTransform.sizeDelta = textBoxSize; //Size of the box surrounding the text. This affects placement
         tempText.transform.position = Camera.main.WorldToScreenPoint(new Vector3(transform.position.x+xOffset+addXOffset, transform.position.y-1.2f+yOffset+addYOffset, 0+addZOffset)); //Location of the text with offset. Should keep it the same despite different devices
-
+     
         tempText.fontSize = fontSize; //Font size
         return tempText;
     }
-
+    
 }

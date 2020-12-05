@@ -16,6 +16,7 @@ TagManager:
   - Arena
   - island
   - water
+  - plate
   layers:
   - Default
   - TransparentFX
